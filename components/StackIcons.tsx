@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, fadeUpItem } from "@/lib/motion";
+
 const stack = [
   "Next.js",
   "TypeScript",
@@ -11,20 +16,33 @@ const stack = [
 
 export default function StackIcons() {
   return (
-    <section className="px-6 md:px-12 max-w-5xl mx-auto py-12">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeUp}
+      className="px-6 md:px-12 max-w-5xl mx-auto py-12"
+    >
       <p className="text-sm uppercase tracking-widest text-neutral-500 mb-6">
         Tools I work with
       </p>
-      <div className="flex flex-wrap gap-3">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="flex flex-wrap gap-3"
+      >
         {stack.map((tool) => (
-          <span
+          <motion.span
             key={tool}
+            variants={fadeUpItem}
             className="px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-300"
           >
             {tool}
-          </span>
+          </motion.span>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
