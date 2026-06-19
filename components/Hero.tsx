@@ -1,6 +1,16 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp } from "@/lib/motion";
+
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-5xl mx-auto">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={fadeUp}
+      className="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-5xl mx-auto"
+    >
       <p className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
         Hey, I'm Bright
       </p>
@@ -18,6 +28,6 @@ export default function Hero() {
       >
         See my work
       </a>
-    </section>
+    </motion.section>
   );
 }
