@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const sectionLinks = [
@@ -13,35 +12,47 @@ const sectionLinks = [
 
 export default function Navbar({ variant = "home" }: { variant?: "home" | "subpage" }) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
 
   const handleLinkClick = () => setOpen(false);
 
-  const scrollToAnchor = (anchor: string, e: React.MouseEvent) => {
-    e.preventDefault();
+  // IMPORTANT: href is always the real, working anchor link (#anchor or
+  // /#anchor). onClick is a progressive enhancement only — if it does
+  // nothing or errors, the native href still navigates normally.
+  // We only preventDefault when we're CERTAIN scrollIntoView will run,
+  // and only on the homepage where the element is guaranteed to exist.
+  const handleClick = (anchor: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     handleLinkClick();
 
-    if (variant === "subpage") {
-      // Navigate home first, then scroll once the page has mounted.
-      router.push(`/#${anchor}`);
+    if (variant !== "home") {
+      // Subpage: let the native href (/#anchor) handle navigation.
+      // Don't preventDefault — Next.js + browser will navigate to "/"
+      // and the browser's own hash handling (plus scroll-margin-top +
+      // scroll-behavior:smooth from globals.css) takes it from there.
       return;
     }
 
     const el = document.getElementById(anchor);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) {
+      // Element not found for some reason — let native href handle it.
+      return;
     }
+
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Keep the URL hash in sync without a jump.
+    window.history.pushState(null, "", `#${anchor}`);
   };
 
   const logoHref = variant === "home" ? "#home" : "/";
-  const handleLogoClick = (e: React.MouseEvent) => {
-    if (variant === "home") scrollToAnchor("home", e);
-  };
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/70 border-b border-neutral-800">
       <div className="max-w-5xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <a href={logoHref} onClick={handleLogoClick} className="font-bold text-lg tracking-tight">
+        <a
+          href={logoHref}
+          onClick={(e) => variant === "home" && handleClick("home", e)}
+          className="font-bold text-lg tracking-tight"
+        >
           Bright
         </a>
 
@@ -51,7 +62,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
             <a
               key={link.anchor}
               href={variant === "home" ? `#${link.anchor}` : `/#${link.anchor}`}
-              onClick={(e) => scrollToAnchor(link.anchor, e)}
+              onClick={(e) => handleClick(link.anchor, e)}
               className="text-sm text-neutral-300 hover:text-white transition"
             >
               {link.label}
@@ -59,7 +70,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
           ))}
           <a
             href={variant === "home" ? "#contact" : "/#contact"}
-            onClick={(e) => scrollToAnchor("contact", e)}
+            onClick={(e) => handleClick("contact", e)}
             className="px-4 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-neutral-200 transition"
           >
             Start a Project
@@ -102,7 +113,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
                 <a
                   key={link.anchor}
                   href={variant === "home" ? `#${link.anchor}` : `/#${link.anchor}`}
-                  onClick={(e) => scrollToAnchor(link.anchor, e)}
+                  onClick={(e) => handleClick(link.anchor, e)}
                   className="text-base text-neutral-300 hover:text-white transition"
                 >
                   {link.label}
@@ -110,7 +121,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
               ))}
               <a
                 href={variant === "home" ? "#contact" : "/#contact"}
-                onClick={(e) => scrollToAnchor("contact", e)}
+                onClick={(e) => handleClick("contact", e)}
                 className="px-4 py-2.5 bg-white text-black text-sm font-medium rounded-full w-fit hover:bg-neutral-200 transition"
               >
                 Start a Project
