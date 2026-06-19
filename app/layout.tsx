@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Bright — Portfolio",
-  description: "Full-stack developer building products from the ground up.",
+  description: "Full-stack developer building products from the ground up — entirely from a phone.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-bg text-text font-body antialiased">{children}</body>
     </html>
   );
 }
