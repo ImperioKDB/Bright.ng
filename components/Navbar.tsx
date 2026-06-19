@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const sectionLinks = [
@@ -12,19 +13,35 @@ const sectionLinks = [
 
 export default function Navbar({ variant = "home" }: { variant?: "home" | "subpage" }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const handleLinkClick = () => setOpen(false);
 
-  // On the homepage, links are plain #anchors. On a subpage (e.g. case
-  // study), links need to navigate back to "/" first, then jump to anchor.
-  const hrefFor = (anchor: string) =>
-    variant === "home" ? `#${anchor}` : `/#${anchor}`;
+  const scrollToAnchor = (anchor: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    handleLinkClick();
+
+    if (variant === "subpage") {
+      // Navigate home first, then scroll once the page has mounted.
+      router.push(`/#${anchor}`);
+      return;
+    }
+
+    const el = document.getElementById(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const logoHref = variant === "home" ? "#home" : "/";
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (variant === "home") scrollToAnchor("home", e);
+  };
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/70 border-b border-neutral-800">
       <div className="max-w-5xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <a href={logoHref} className="font-bold text-lg tracking-tight">
+        <a href={logoHref} onClick={handleLogoClick} className="font-bold text-lg tracking-tight">
           Bright
         </a>
 
@@ -33,14 +50,16 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
           {sectionLinks.map((link) => (
             <a
               key={link.anchor}
-              href={hrefFor(link.anchor)}
+              href={variant === "home" ? `#${link.anchor}` : `/#${link.anchor}`}
+              onClick={(e) => scrollToAnchor(link.anchor, e)}
               className="text-sm text-neutral-300 hover:text-white transition"
             >
               {link.label}
             </a>
           ))}
           <a
-            href={hrefFor("contact")}
+            href={variant === "home" ? "#contact" : "/#contact"}
+            onClick={(e) => scrollToAnchor("contact", e)}
             className="px-4 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-neutral-200 transition"
           >
             Start a Project
@@ -82,16 +101,16 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
               {sectionLinks.map((link) => (
                 <a
                   key={link.anchor}
-                  href={hrefFor(link.anchor)}
-                  onClick={handleLinkClick}
+                  href={variant === "home" ? `#${link.anchor}` : `/#${link.anchor}`}
+                  onClick={(e) => scrollToAnchor(link.anchor, e)}
                   className="text-base text-neutral-300 hover:text-white transition"
                 >
                   {link.label}
                 </a>
               ))}
               <a
-                href={hrefFor("contact")}
-                onClick={handleLinkClick}
+                href={variant === "home" ? "#contact" : "/#contact"}
+                onClick={(e) => scrollToAnchor("contact", e)}
                 className="px-4 py-2.5 bg-white text-black text-sm font-medium rounded-full w-fit hover:bg-neutral-200 transition"
               >
                 Start a Project
