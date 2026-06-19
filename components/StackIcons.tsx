@@ -23,7 +23,7 @@ export default function StackIcons() {
       variants={fadeUp}
       className="px-6 md:px-12 max-w-5xl mx-auto py-12"
     >
-      <p className="text-sm uppercase tracking-widest text-neutral-500 mb-6">
+      <p className="text-sm uppercase tracking-widest text-muted mb-6 font-mono">
         Tools I work with
       </p>
       <motion.div
@@ -37,7 +37,7 @@ export default function StackIcons() {
           <motion.span
             key={tool}
             variants={fadeUpItem}
-            className="px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-300"
+            className="px-4 py-2 border border-edge rounded-full text-sm text-muted font-mono"
           >
             {tool}
           </motion.span>
