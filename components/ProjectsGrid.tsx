@@ -15,10 +15,10 @@ export default function ProjectsGrid() {
       variants={fadeUp}
       className="px-6 md:px-12 max-w-5xl mx-auto py-20"
     >
-      <p className="text-sm uppercase tracking-widest text-neutral-500 mb-2">
+      <p className="text-sm uppercase tracking-widest text-muted mb-2 font-mono">
         My work
       </p>
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 text-text">
         Projects I've worked on.
       </h2>
       <motion.div
@@ -32,19 +32,19 @@ export default function ProjectsGrid() {
           <motion.div key={project.slug} variants={fadeUpItem}>
             <Link
               href={`/projects/${project.slug}`}
-              className="block border border-neutral-800 rounded-2xl p-6 hover:border-neutral-600 transition"
+              className="block bg-surface border border-edge rounded-2xl p-6 hover:border-accent transition"
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs px-2 py-1 bg-neutral-800 rounded-full">
+                <span className="text-xs px-2 py-1 bg-bg border border-edge rounded-full text-muted font-mono">
                   {project.category}
                 </span>
-                <span className="text-xs px-2 py-1 bg-emerald-900 text-emerald-300 rounded-full">
+                <span className="text-xs px-2 py-1 bg-accent/15 text-accent rounded-full font-mono">
                   {project.status}
                 </span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-neutral-400 text-sm">{project.description}</p>
-              <span className="inline-block mt-4 text-sm text-neutral-300">
+              <h3 className="font-display text-xl font-semibold mb-2 text-text">{project.title}</h3>
+              <p className="text-muted text-sm">{project.description}</p>
+              <span className="inline-block mt-4 text-sm text-accent">
                 View case study →
               </span>
             </Link>
