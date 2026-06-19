@@ -13,24 +13,24 @@ export default function CaseStudyContent({ project }: { project: Project }) {
       <main className="px-6 md:px-12 max-w-3xl mx-auto py-16 md:py-24">
         <Link
           href="/"
-          className="text-sm text-neutral-500 hover:text-neutral-300 transition mb-12 inline-block"
+          className="text-sm text-muted hover:text-accent transition mb-12 inline-block font-mono"
         >
           ← Back to home
         </Link>
 
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs px-2 py-1 bg-neutral-800 rounded-full">
+            <span className="text-xs px-2 py-1 bg-surface border border-edge rounded-full text-muted font-mono">
               {project.category}
             </span>
-            <span className="text-xs px-2 py-1 bg-emerald-900 text-emerald-300 rounded-full">
+            <span className="text-xs px-2 py-1 bg-accent/15 text-accent rounded-full font-mono">
               {project.status}
             </span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold mb-6">
+          <h1 className="font-display text-3xl md:text-5xl font-bold mb-6 text-text">
             {project.title}
           </h1>
-          <p className="text-lg text-neutral-400 mb-12">
+          <p className="text-lg text-muted mb-12">
             {project.description}
           </p>
         </motion.div>
@@ -42,10 +42,10 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={fadeUp}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-3">
+          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">
             The problem
           </h2>
-          <p className="text-neutral-300 leading-relaxed">{project.problem}</p>
+          <p className="text-text leading-relaxed">{project.problem}</p>
         </motion.div>
 
         <motion.div
@@ -55,10 +55,10 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={fadeUp}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-3">
+          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">
             The solution
           </h2>
-          <p className="text-neutral-300 leading-relaxed">{project.solution}</p>
+          <p className="text-text leading-relaxed">{project.solution}</p>
         </motion.div>
 
         <motion.div
@@ -68,7 +68,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={staggerContainer}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-3">
+          <h2 className="text-sm uppercase tracking-widest text-muted mb-3 font-mono">
             Stack
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -76,7 +76,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
               <motion.span
                 key={tech}
                 variants={fadeUpItem}
-                className="px-3 py-1.5 border border-neutral-700 rounded-full text-sm text-neutral-300"
+                className="px-3 py-1.5 border border-edge rounded-full text-sm text-muted font-mono"
               >
                 {tech}
               </motion.span>
@@ -97,7 +97,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-white text-black font-medium rounded-full hover:bg-neutral-200 transition"
+                className="px-6 py-3 bg-accent text-bg font-medium rounded-full hover:opacity-90 transition"
               >
                 View live
               </a>
@@ -107,7 +107,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-neutral-700 rounded-full hover:border-neutral-500 transition"
+                className="px-6 py-3 border border-edge rounded-full text-text hover:border-accent transition"
               >
                 View repo
               </a>
@@ -129,7 +129,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 variants={fadeUpItem}
                 src={src}
                 alt={`${project.title} screenshot ${i + 1}`}
-                className="w-full rounded-2xl border border-neutral-800"
+                className="w-full rounded-2xl border border-edge"
               />
             ))}
           </motion.div>
