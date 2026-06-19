@@ -6,6 +6,7 @@ import { fadeUp } from "@/lib/motion";
 export default function Hero() {
   return (
     <motion.section
+      id="home"
       initial="hidden"
       animate="visible"
       variants={fadeUp}
