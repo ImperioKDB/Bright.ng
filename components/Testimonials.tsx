@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer, fadeUpItem } from "@/lib/motion";
+
 const testimonials = [
   {
     quote:
@@ -9,25 +14,38 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="px-6 md:px-12 max-w-5xl mx-auto py-20">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeUp}
+      className="px-6 md:px-12 max-w-5xl mx-auto py-20"
+    >
       <p className="text-sm uppercase tracking-widest text-neutral-500 mb-2">
         Testimonials
       </p>
       <h2 className="text-3xl md:text-4xl font-bold mb-10">
         What people say.
       </h2>
-      <div className="grid md:grid-cols-2 gap-6">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid md:grid-cols-2 gap-6"
+      >
         {testimonials.map((t, i) => (
-          <div
+          <motion.div
             key={i}
+            variants={fadeUpItem}
             className="border border-neutral-800 rounded-2xl p-6"
           >
             <p className="text-neutral-300 mb-4">"{t.quote}"</p>
             <p className="font-semibold">{t.name}</p>
             <p className="text-sm text-neutral-500">{t.role}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
