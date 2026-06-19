@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sticky nav is h-16 (64px). Without this, scrolling to an anchor
+   tucks its top edge directly under the nav, hiding the section
+   heading. scroll-margin-top pushes the scroll target down so the
+   section starts BELOW the nav, fully in view. */
+section[id],
+footer[id] {
+  scroll-margin-top: 80px;
+}
