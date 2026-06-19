@@ -10,36 +10,54 @@ const sectionLinks = [
   { label: "Contact", anchor: "contact" },
 ];
 
+// How long the mobile panel takes to collapse (matches the motion.nav
+// transition below). We wait this long before scrolling so the section
+// we're scrolling to isn't being covered by a panel still animating shut.
+const MENU_CLOSE_MS = 300;
+
 export default function Navbar({ variant = "home" }: { variant?: "home" | "subpage" }) {
   const [open, setOpen] = useState(false);
 
-  const handleLinkClick = () => setOpen(false);
+  const scrollToSection = (anchor: string) => {
+    const el = document.getElementById(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", `#${anchor}`);
+    }
+  };
 
   const handleClick = (anchor: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-    handleLinkClick();
-
     if (variant !== "home") {
-      return;
-    }
-
-    const el = document.getElementById(anchor);
-    if (!el) {
+      // Subpage: native href="/#anchor" handles navigation + reload scroll.
+      setOpen(false);
       return;
     }
 
     e.preventDefault();
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.history.pushState(null, "", `#${anchor}`);
+
+    if (open) {
+      // Close the menu first, THEN scroll once the collapse animation
+      // has had time to finish. Doing both at once was the bug: the
+      // panel's height animation was still running, so scrollIntoView
+      // measured a layout that hadn't settled yet and silently no-op'd.
+      setOpen(false);
+      window.setTimeout(() => scrollToSection(anchor), MENU_CLOSE_MS);
+    } else {
+      scrollToSection(anchor);
+    }
   };
 
   const logoHref = variant === "home" ? "#home" : "/";
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (variant === "home") handleClick("home", e);
+  };
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-bg/80 border-b border-edge">
       <div className="max-w-5xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         <a
           href={logoHref}
-          onClick={(e) => variant === "home" && handleClick("home", e)}
+          onClick={handleLogoClick}
           className="font-display font-bold text-lg tracking-tight text-text"
         >
           Bright<span className="text-accent">.</span>
