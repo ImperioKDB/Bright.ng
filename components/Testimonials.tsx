@@ -21,10 +21,10 @@ export default function Testimonials() {
       variants={fadeUp}
       className="px-6 md:px-12 max-w-5xl mx-auto py-20"
     >
-      <p className="text-sm uppercase tracking-widest text-neutral-500 mb-2">
+      <p className="text-sm uppercase tracking-widest text-muted mb-2 font-mono">
         Testimonials
       </p>
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 text-text">
         What people say.
       </h2>
       <motion.div
@@ -38,11 +38,11 @@ export default function Testimonials() {
           <motion.div
             key={i}
             variants={fadeUpItem}
-            className="border border-neutral-800 rounded-2xl p-6"
+            className="bg-surface border border-edge rounded-2xl p-6"
           >
-            <p className="text-neutral-300 mb-4">"{t.quote}"</p>
-            <p className="font-semibold">{t.name}</p>
-            <p className="text-sm text-neutral-500">{t.role}</p>
+            <p className="text-text mb-4">"{t.quote}"</p>
+            <p className="font-semibold text-text">{t.name}</p>
+            <p className="text-sm text-muted">{t.role}</p>
           </motion.div>
         ))}
       </motion.div>
