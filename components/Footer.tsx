@@ -1,6 +1,17 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp } from "@/lib/motion";
+
 export default function Footer() {
   return (
-    <footer className="px-6 md:px-12 max-w-5xl mx-auto py-20 border-t border-neutral-800">
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeUp}
+      className="px-6 md:px-12 max-w-5xl mx-auto py-20 border-t border-neutral-800"
+    >
       <h2 className="text-3xl md:text-5xl font-bold mb-8">
         Let's build something together.
       </h2>
@@ -13,6 +24,6 @@ export default function Footer() {
       <p className="text-neutral-600 text-sm mt-12">
         © {new Date().getFullYear()} Bright. All rights reserved.
       </p>
-    </footer>
+    </motion.footer>
   );
 }
