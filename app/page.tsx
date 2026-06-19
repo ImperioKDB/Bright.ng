@@ -1,7 +1,19 @@
+import Hero from "@/components/Hero";
+import StackIcons from "@/components/StackIcons";
+import ProjectsGrid from "@/components/ProjectsGrid";
+import Testimonials from "@/components/Testimonials";
+import Timeline from "@/components/Timeline";
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">Bright.ng — scaffold ready</h1>
+    <main>
+      <Hero />
+      <StackIcons />
+      <ProjectsGrid />
+      <Testimonials />
+      <Timeline />
+      <Footer />
     </main>
   );
 }
