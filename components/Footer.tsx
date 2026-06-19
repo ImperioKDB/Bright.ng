@@ -6,6 +6,7 @@ import { fadeUp } from "@/lib/motion";
 export default function Footer() {
   return (
     <motion.footer
+      id="contact"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
