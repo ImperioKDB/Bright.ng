@@ -3,38 +3,44 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+const sectionLinks = [
+  { label: "Home", anchor: "home" },
+  { label: "Projects", anchor: "projects" },
+  { label: "About", anchor: "about" },
+  { label: "Contact", anchor: "contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ variant = "home" }: { variant?: "home" | "subpage" }) {
   const [open, setOpen] = useState(false);
 
   const handleLinkClick = () => setOpen(false);
 
+  // On the homepage, links are plain #anchors. On a subpage (e.g. case
+  // study), links need to navigate back to "/" first, then jump to anchor.
+  const hrefFor = (anchor: string) =>
+    variant === "home" ? `#${anchor}` : `/#${anchor}`;
+  const logoHref = variant === "home" ? "#home" : "/";
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/70 border-b border-neutral-800">
       <div className="max-w-5xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <a href="#home" className="font-bold text-lg tracking-tight">
+        <a href={logoHref} className="font-bold text-lg tracking-tight">
           Bright
         </a>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {sectionLinks.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={link.anchor}
+              href={hrefFor(link.anchor)}
               className="text-sm text-neutral-300 hover:text-white transition"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="#contact"
+            href={hrefFor("contact")}
             className="px-4 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-neutral-200 transition"
           >
             Start a Project
@@ -73,10 +79,10 @@ export default function Navbar() {
             className="md:hidden overflow-hidden border-t border-neutral-800"
           >
             <div className="flex flex-col px-6 py-6 gap-5">
-              {navLinks.map((link) => (
+              {sectionLinks.map((link) => (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={link.anchor}
+                  href={hrefFor(link.anchor)}
                   onClick={handleLinkClick}
                   className="text-base text-neutral-300 hover:text-white transition"
                 >
@@ -84,7 +90,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href={hrefFor("contact")}
                 onClick={handleLinkClick}
                 className="px-4 py-2.5 bg-white text-black text-sm font-medium rounded-full w-fit hover:bg-neutral-200 transition"
               >
