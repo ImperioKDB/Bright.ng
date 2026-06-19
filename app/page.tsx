@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StackIcons from "@/components/StackIcons";
 import ProjectsGrid from "@/components/ProjectsGrid";
@@ -8,6 +9,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main>
+      <Navbar />
       <Hero />
       <StackIcons />
       <ProjectsGrid />
