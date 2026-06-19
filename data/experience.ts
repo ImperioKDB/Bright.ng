@@ -3,9 +3,15 @@ export interface Experience {
   role: string;
   location: string;
   startDate: string;
-  endDate: string; // "Present" if ongoing
+  endDate: string;
 }
 
 export const experience: Experience[] = [
-  // Add your work history here
+  {
+    company: "University of Benin",
+    role: "Software Engineering Student",
+    location: "Benin City, Nigeria",
+    startDate: "2025",
+    endDate: "Present",
+  },
 ];
