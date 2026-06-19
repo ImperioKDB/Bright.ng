@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Sticky nav is h-16 (64px). Without this, scrolling to an anchor
-   tucks its top edge directly under the nav, hiding the section
-   heading. scroll-margin-top pushes the scroll target down so the
-   section starts BELOW the nav, fully in view. */
+body {
+  background-color: #0E0D0F;
+  color: #F4F2ED;
+  font-family: var(--font-body);
+}
+
 section[id],
 footer[id] {
   scroll-margin-top: 80px;
