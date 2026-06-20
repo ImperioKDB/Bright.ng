@@ -12,9 +12,7 @@ export default function Hero() {
       variants={fadeUp}
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-5xl mx-auto overflow-hidden"
     >
-      {/* Signature gradient glow — warm, monochrome (accent only, varying
-          opacity/blur), not a multi-hue gradient. Sits behind content,
-          purely decorative, no pointer events. */}
+      {/* Signature gradient glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-32 right-[-10%] w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] rounded-full"
@@ -25,7 +23,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div className="flex-1">
           <p className="text-sm uppercase tracking-widest text-accent mb-4 font-mono">
             Hey, I'm Bright
@@ -53,17 +51,16 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Photo slot. Drop a photo at /public/assets/profile.jpg via the
-            GitHub web editor and it will appear here automatically. */}
-        <div className="flex-shrink-0 w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-edge bg-surface mx-auto md:mx-0">
+        {/* Frameless cutout-style photo — no circle, no border, no card.
+            Bottom-aligned with the text block, bleeds toward the edge.
+            If /assets/profile.png is missing, the slot collapses cleanly. */}
+        <div className="flex-shrink-0 w-48 md:w-72 self-end md:self-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/profile.jpg"
+            src="/assets/profile.png"
             alt="Bright"
-            className="w-full h-full object-cover"
+            className="w-full h-auto object-contain object-bottom"
             onError={(e) => {
-              // If no photo has been uploaded yet, hide the broken image
-              // icon gracefully instead of showing a broken-image glyph.
               (e.target as HTMLImageElement).style.display = "none";
             }}
           />
