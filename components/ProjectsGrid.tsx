@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, fadeUpItem } from "@/lib/motion";
 import { projects } from "@/data/projects";
+import PillBadge from "@/components/PillBadge";
 
 export default function ProjectsGrid() {
   return (
@@ -13,20 +14,24 @@ export default function ProjectsGrid() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeUp}
-      className="px-6 md:px-12 max-w-5xl mx-auto py-20"
+      className="px-6 md:px-12 max-w-5xl mx-auto py-20 text-center md:text-left"
     >
-      <p className="text-sm uppercase tracking-widest text-muted mb-2 font-mono">
-        My work
-      </p>
-      <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 text-text">
+      <div className="flex justify-center md:justify-start">
+        <PillBadge className="mb-6">My Works 🤩</PillBadge>
+      </div>
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text">
         Projects I've worked on.
       </h2>
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 bg-accent-gradient bg-clip-text text-transparent">
+        At a glance.
+      </h2>
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="grid md:grid-cols-2 gap-6"
+        className="grid md:grid-cols-2 gap-6 text-left"
       >
         {projects.map((project) => (
           <motion.div key={project.slug} variants={fadeUpItem}>
@@ -51,6 +56,12 @@ export default function ProjectsGrid() {
           </motion.div>
         ))}
       </motion.div>
+
+      <div className="flex justify-center md:justify-start mt-10">
+        <a href="#projects" className="text-sm text-accent font-medium hover:opacity-80 transition">
+          ALL PROJECTS →
+        </a>
+      </div>
     </motion.section>
   );
 }
