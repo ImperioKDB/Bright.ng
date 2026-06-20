@@ -10,9 +10,6 @@ const sectionLinks = [
   { label: "Contact", anchor: "contact" },
 ];
 
-// How long the mobile panel takes to collapse (matches the motion.nav
-// transition below). We wait this long before scrolling so the section
-// we're scrolling to isn't being covered by a panel still animating shut.
 const MENU_CLOSE_MS = 300;
 
 export default function Navbar({ variant = "home" }: { variant?: "home" | "subpage" }) {
@@ -28,18 +25,11 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
 
   const handleClick = (anchor: string, e: React.MouseEvent<HTMLAnchorElement>) => {
     if (variant !== "home") {
-      // Subpage: native href="/#anchor" handles navigation + reload scroll.
       setOpen(false);
       return;
     }
-
     e.preventDefault();
-
     if (open) {
-      // Close the menu first, THEN scroll once the collapse animation
-      // has had time to finish. Doing both at once was the bug: the
-      // panel's height animation was still running, so scrollIntoView
-      // measured a layout that hadn't settled yet and silently no-op'd.
       setOpen(false);
       window.setTimeout(() => scrollToSection(anchor), MENU_CLOSE_MS);
     } else {
@@ -58,9 +48,9 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
         <a
           href={logoHref}
           onClick={handleLogoClick}
-          className="font-display font-bold text-lg tracking-tight text-text"
+          className="font-display font-extrabold text-xl tracking-tight bg-accent-gradient bg-clip-text text-transparent"
         >
-          Bright<span className="text-accent">.</span>
+          BRIGHT
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -77,7 +67,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
           <a
             href={variant === "home" ? "#contact" : "/#contact"}
             onClick={(e) => handleClick("contact", e)}
-            className="px-4 py-2 bg-accent text-bg text-sm font-medium rounded-full hover:opacity-90 transition"
+            className="px-5 py-2.5 bg-accent-gradient text-bg text-sm font-semibold rounded-full hover:opacity-90 transition shadow-[0_0_20px_rgba(232,119,46,0.35)]"
           >
             Start a Project
           </a>
@@ -88,18 +78,9 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
           className="md:hidden flex flex-col gap-1.5 w-6 h-6 justify-center items-center"
           aria-label="Toggle menu"
         >
-          <motion.span
-            animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="w-6 h-0.5 bg-text block"
-          />
-          <motion.span
-            animate={open ? { opacity: 0 } : { opacity: 1 }}
-            className="w-6 h-0.5 bg-text block"
-          />
-          <motion.span
-            animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="w-6 h-0.5 bg-text block"
-          />
+          <motion.span animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }} className="w-6 h-0.5 bg-text block" />
+          <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} className="w-6 h-0.5 bg-text block" />
+          <motion.span animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }} className="w-6 h-0.5 bg-text block" />
         </button>
       </div>
 
@@ -126,7 +107,7 @@ export default function Navbar({ variant = "home" }: { variant?: "home" | "subpa
               <a
                 href={variant === "home" ? "#contact" : "/#contact"}
                 onClick={(e) => handleClick("contact", e)}
-                className="px-4 py-2.5 bg-accent text-bg text-sm font-medium rounded-full w-fit hover:opacity-90 transition"
+                className="px-4 py-2.5 bg-accent-gradient text-bg text-sm font-semibold rounded-full w-fit hover:opacity-90 transition"
               >
                 Start a Project
               </a>
