@@ -27,7 +27,7 @@ const loopedStack = [...stack, ...stack];
 export default function StackIcons() {
   return (
     <section className="py-12 overflow-hidden">
-      <p className="text-sm uppercase tracking-widest text-muted mb-6 font-mono text-center px-6">
+      <p className="text-sm uppercase tracking-widest text-text/70 mb-6 font-mono text-center px-6">
         Tools I work with
       </p>
 
@@ -39,9 +39,9 @@ export default function StackIcons() {
           {loopedStack.map(({ name, Icon }, i) => (
             <span
               key={`${name}-${i}`}
-              className="flex items-center gap-2 px-4 py-2 border border-edge rounded-full text-sm text-muted font-mono whitespace-nowrap hover:border-accent/50 hover:text-text transition flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-2 bg-surface border border-edge rounded-full text-sm text-text/90 font-mono whitespace-nowrap hover:border-accent transition flex-shrink-0"
             >
-              <Icon size={16} />
+              <Icon size={16} className="text-text/90" />
               {name}
             </span>
           ))}
