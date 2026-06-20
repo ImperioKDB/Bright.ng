@@ -6,16 +6,22 @@ import type { Project } from "@/data/projects";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
-export default function CaseStudyContent({ project }: { project: Project }) {
+export default function CaseStudyContent({
+  project,
+  nextProject,
+}: {
+  project: Project;
+  nextProject?: Project;
+}) {
   return (
     <>
       <Navbar variant="subpage" />
       <main className="px-6 md:px-12 max-w-3xl mx-auto py-16 md:py-24">
         <Link
-          href="/"
+          href="/#projects"
           className="text-sm text-muted hover:text-accent transition mb-12 inline-block font-mono"
         >
-          ← Back to home
+          ← All Projects
         </Link>
 
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
@@ -27,85 +33,34 @@ export default function CaseStudyContent({ project }: { project: Project }) {
               {project.status}
             </span>
           </div>
-          <h1 className="font-display text-3xl md:text-5xl font-bold mb-6 text-text">
-            {project.title}
+          <h1 className="font-display text-3xl md:text-5xl font-bold mb-4 text-text">
+            {project.title} — {project.description}
           </h1>
-          <p className="text-lg text-muted mb-12">{project.description}</p>
-        </motion.div>
+          <p className="text-lg text-muted mb-10">{project.solution}</p>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="mb-10"
-        >
-          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">The problem</h2>
-          <p className="text-text leading-relaxed">{project.problem}</p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeUp}
-          className="mb-10"
-        >
-          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">The solution</h2>
-          <p className="text-text leading-relaxed">{project.solution}</p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
-          className="mb-10"
-        >
-          <h2 className="text-sm uppercase tracking-widest text-muted mb-3 font-mono">Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
-              <motion.span
-                key={tech}
-                variants={fadeUpItem}
-                className="px-3 py-1.5 border border-edge rounded-full text-sm text-muted font-mono"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-
-        {(project.liveUrl || project.repoUrl) && (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeUp}
-            className="flex gap-4 mt-12"
-          >
+          <div className="flex flex-wrap gap-4 mb-16">
+            <a
+              href="#problem"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("problem")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 py-3 border border-edge rounded-full text-text hover:border-accent transition text-sm font-medium"
+            >
+              Continue Reading
+            </a>
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-accent-gradient text-bg font-semibold rounded-full hover:opacity-90 transition"
+                className="px-6 py-3 bg-accent-gradient text-bg font-semibold rounded-full hover:opacity-90 transition text-sm"
               >
-                View live
+                Visit Website
               </a>
             )}
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 border border-edge rounded-full text-text hover:border-accent transition"
-              >
-                View repo
-              </a>
-            )}
-          </motion.div>
-        )}
+          </div>
+        </motion.div>
 
         {project.images.length > 0 && (
           <motion.div
@@ -113,7 +68,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}
-            className="mt-16 space-y-6"
+            className="mb-16 space-y-6"
           >
             {project.images.map((src, i) => (
               <motion.img
@@ -124,6 +79,130 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 className="w-full rounded-2xl border border-edge"
               />
             ))}
+          </motion.div>
+        )}
+
+        <div className="border-t border-edge mb-16" />
+
+        <motion.div
+          id="problem"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          className="mb-14 scroll-mt-24"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-4">The Problem</h2>
+          <p className="text-text leading-relaxed">{project.problem}</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          className="mb-14"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-4">The Solution</h2>
+          <p className="text-text leading-relaxed">{project.solution}</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          className="mb-14"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-4">My Role</h2>
+          <p className="text-text leading-relaxed">{project.myRole}</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          className="mb-14"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-6">Features</h2>
+          <div className="space-y-6">
+            {project.features.map((feature) => (
+              <motion.div key={feature.name} variants={fadeUpItem}>
+                <h3 className="font-display font-semibold text-text mb-1">{feature.name}</h3>
+                <p className="text-muted leading-relaxed text-sm">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          className="mb-14"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-6">Technologies Used</h2>
+          <div className="space-y-8">
+            {project.technologies.map((tech) => (
+              <motion.div key={tech.category} variants={fadeUpItem}>
+                <h3 className="font-display font-semibold text-accent mb-2 text-sm uppercase tracking-wide">
+                  {tech.category}
+                </h3>
+                <p className="text-muted leading-relaxed text-sm mb-3">{tech.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {tech.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1.5 border border-edge rounded-full text-sm text-muted font-mono"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          className="mb-14"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-4">Monetization Model</h2>
+          <p className="text-text leading-relaxed">{project.monetization}</p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          className="mb-20"
+        >
+          <h2 className="font-display text-2xl font-bold text-text mb-4">Project Summary</h2>
+          <p className="text-text leading-relaxed">{project.summary}</p>
+        </motion.div>
+
+        {nextProject && (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+          >
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="block bg-surface border border-edge rounded-2xl p-8 hover:border-accent transition"
+            >
+              <p className="text-sm text-muted font-mono mb-2">Next Project →</p>
+              <h3 className="font-display text-2xl font-bold text-text mb-2">{nextProject.title}</h3>
+              <p className="text-muted text-sm">{nextProject.description}</p>
+            </Link>
           </motion.div>
         )}
       </main>
