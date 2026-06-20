@@ -29,13 +29,16 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center">
         <PillBadge className="mb-8">Yo! Whats up? 👋🏿</PillBadge>
 
-        <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-2">
+        <h1 className="font-display text-4xl md:text-7xl font-bold leading-[1.1] mb-2">
           <span className="text-text">Let's create</span>
         </h1>
-        <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-2 bg-accent-gradient bg-clip-text text-transparent min-h-[1.2em]">
+        <h1
+          className="font-display text-4xl md:text-7xl font-bold leading-[1.1] mb-2 bg-accent-gradient bg-clip-text text-transparent"
+          style={{ minHeight: "1.1em" }}
+        >
           <WordRotator words={rotatingWords} />
         </h1>
-        <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-8">
+        <h1 className="font-display text-4xl md:text-7xl font-bold leading-[1.1] mb-8">
           <span className="text-text">together</span>
         </h1>
 
