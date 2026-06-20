@@ -21,7 +21,7 @@ export default function Hero() {
         className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[90vw] h-[60vw] max-w-[800px] max-h-[600px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(232,119,46,0.35) 0%, rgba(232,119,46,0.1) 45%, rgba(232,119,46,0) 70%)",
+            "radial-gradient(circle, rgba(245,166,35,0.4) 0%, rgba(232,69,60,0.18) 45%, rgba(232,69,60,0) 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -53,7 +53,7 @@ export default function Hero() {
 
         <a
           href="#projects"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-accent-gradient text-bg font-semibold rounded-full hover:opacity-90 transition shadow-[0_0_30px_rgba(232,119,46,0.4)] mb-8"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-accent-gradient text-bg font-semibold rounded-full hover:opacity-90 transition shadow-[0_0_30px_rgba(232,69,60,0.4)] mb-8"
         >
           See my work →
         </a>
