@@ -9,8 +9,9 @@ module.exports = {
       colors: {
         bg: '#0E0D0F',
         text: '#F4F2ED',
-        accent: '#E8772E',
-        accentLight: '#F4A05C',
+        accent: '#F5A623',
+        accentLight: '#FBC85C',
+        accentDeep: '#E8453C',
         muted: '#6B6560',
         surface: '#1C1A1B',
         edge: '#2A2729',
@@ -21,7 +22,7 @@ module.exports = {
         mono: ['var(--font-mono)', 'monospace'],
       },
       backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, #E8772E 0%, #F4A05C 100%)',
+        'accent-gradient': 'linear-gradient(135deg, #F5A623 0%, #E8453C 100%)',
       },
     },
   },
