@@ -42,12 +42,20 @@ export default function Hero() {
           <span className="text-text">together</span>
         </h1>
 
-        <div className="w-56 md:w-72 mb-8">
+        <div className="relative w-56 md:w-72 mb-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/profile.png"
             alt="Bright"
             className="w-full h-auto object-contain"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+              WebkitMaskComposite: "source-in",
+            }}
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = "none";
             }}
