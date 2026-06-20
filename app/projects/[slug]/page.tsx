@@ -17,5 +17,7 @@ export default function ProjectPage({
     notFound();
   }
 
-  return <CaseStudyContent project={project} />;
+  const nextProject = projects.find((p) => p.slug === project.nextSlug);
+
+  return <CaseStudyContent project={project} nextProject={nextProject} />;
 }
