@@ -33,7 +33,7 @@ export default function Hero() {
           <span className="text-text">Let's create</span>
         </h1>
         <h1
-          className="font-display text-4xl md:text-7xl font-bold leading-[1.1] mb-2 bg-accent-gradient bg-clip-text text-transparent"
+          className="font-display text-4xl md:text-7xl font-bold leading-[1.1] mb-2"
           style={{ minHeight: "1.1em" }}
         >
           <WordRotator words={rotatingWords} />
