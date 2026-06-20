@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
 import PillBadge from "@/components/PillBadge";
+import WordRotator from "@/components/WordRotator";
+
+const rotatingWords = ["Products", "Apps", "Tools", "Ideas"];
 
 export default function Hero() {
   return (
@@ -29,8 +32,8 @@ export default function Hero() {
         <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-2">
           <span className="text-text">Let's create</span>
         </h1>
-        <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-2 bg-accent-gradient bg-clip-text text-transparent">
-          Products
+        <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-2 bg-accent-gradient bg-clip-text text-transparent min-h-[1.2em]">
+          <WordRotator words={rotatingWords} />
         </h1>
         <h1 className="font-display text-4xl md:text-7xl font-bold leading-tight mb-8">
           <span className="text-text">together</span>
