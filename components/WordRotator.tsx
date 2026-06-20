@@ -23,6 +23,9 @@ export default function WordRotator({
     return () => clearInterval(timer);
   }, [words.length, intervalMs]);
 
+  const gradientClass =
+    "bg-accent-gradient bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]";
+
   return (
     <span className={`relative inline-block ${className}`}>
       {mounted ? (
@@ -33,13 +36,13 @@ export default function WordRotator({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="inline-block"
+            className={`inline-block ${gradientClass}`}
           >
             {words[index]}
           </motion.span>
         </AnimatePresence>
       ) : (
-        <span className="inline-block">{words[0]}</span>
+        <span className={`inline-block ${gradientClass}`}>{words[0]}</span>
       )}
     </span>
   );
