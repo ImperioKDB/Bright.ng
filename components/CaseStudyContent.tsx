@@ -30,9 +30,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           <h1 className="font-display text-3xl md:text-5xl font-bold mb-6 text-text">
             {project.title}
           </h1>
-          <p className="text-lg text-muted mb-12">
-            {project.description}
-          </p>
+          <p className="text-lg text-muted mb-12">{project.description}</p>
         </motion.div>
 
         <motion.div
@@ -42,9 +40,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={fadeUp}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">
-            The problem
-          </h2>
+          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">The problem</h2>
           <p className="text-text leading-relaxed">{project.problem}</p>
         </motion.div>
 
@@ -55,9 +51,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={fadeUp}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">
-            The solution
-          </h2>
+          <h2 className="text-sm uppercase tracking-widest text-accent mb-3 font-mono">The solution</h2>
           <p className="text-text leading-relaxed">{project.solution}</p>
         </motion.div>
 
@@ -68,9 +62,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           variants={staggerContainer}
           className="mb-10"
         >
-          <h2 className="text-sm uppercase tracking-widest text-muted mb-3 font-mono">
-            Stack
-          </h2>
+          <h2 className="text-sm uppercase tracking-widest text-muted mb-3 font-mono">Stack</h2>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tech) => (
               <motion.span
@@ -97,7 +89,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-accent text-bg font-medium rounded-full hover:opacity-90 transition"
+                className="px-6 py-3 bg-accent-gradient text-bg font-semibold rounded-full hover:opacity-90 transition"
               >
                 View live
               </a>
