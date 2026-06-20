@@ -37,19 +37,19 @@ export default function ProjectsGrid() {
           <motion.div key={project.slug} variants={fadeUpItem}>
             <Link
               href={`/projects/${project.slug}`}
-              className="block bg-surface border border-edge rounded-2xl p-6 hover:border-accent transition"
+              className="block bg-surface border border-edge rounded-2xl p-6 transition-colors duration-200 hover:border-text/30"
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs px-2 py-1 bg-bg border border-edge rounded-full text-muted font-mono">
+                <span className="text-xs px-2.5 py-1 bg-bg border border-edge rounded-full text-muted font-mono">
                   {project.category}
                 </span>
-                <span className="text-xs px-2 py-1 bg-accent/15 text-accent rounded-full font-mono">
+                <span className="text-xs px-2.5 py-1 bg-accent-gradient text-bg rounded-full font-mono font-semibold">
                   {project.status}
                 </span>
               </div>
               <h3 className="font-display text-xl font-semibold mb-2 text-text">{project.title}</h3>
               <p className="text-muted text-sm">{project.description}</p>
-              <span className="inline-block mt-4 text-sm text-accent">
+              <span className="inline-block mt-4 text-sm bg-accent-gradient bg-clip-text text-transparent font-medium">
                 View case study →
               </span>
             </Link>
@@ -58,7 +58,7 @@ export default function ProjectsGrid() {
       </motion.div>
 
       <div className="flex justify-center md:justify-start mt-10">
-        <a href="#projects" className="text-sm text-accent font-medium hover:opacity-80 transition">
+        <a href="#projects" className="text-sm bg-accent-gradient bg-clip-text text-transparent font-medium hover:opacity-80 transition">
           ALL PROJECTS →
         </a>
       </div>
