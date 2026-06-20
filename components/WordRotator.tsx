@@ -13,8 +13,10 @@ export default function WordRotator({
   className?: string;
 }) {
   const [index, setIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       setIndex((i) => (i + 1) % words.length);
     }, intervalMs);
@@ -23,18 +25,22 @@ export default function WordRotator({
 
   return (
     <span className={`relative inline-block ${className}`}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={words[index]}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="inline-block"
-        >
-          {words[index]}
-        </motion.span>
-      </AnimatePresence>
+      {mounted ? (
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={words[index]}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="inline-block"
+          >
+            {words[index]}
+          </motion.span>
+        </AnimatePresence>
+      ) : (
+        <span className="inline-block">{words[0]}</span>
+      )}
     </span>
   );
 }
