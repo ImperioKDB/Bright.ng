@@ -8,9 +8,9 @@ import PillBadge from "@/components/PillBadge";
 const testimonials = [
   {
     quote:
-      "Placeholder testimonial — swap in real feedback from collaborators or clients once available.",
-    name: "Name",
-    role: "Role, Company",
+      "Bright's instincts for frontend architecture shaped Forge from the ground up. He doesn't just implement — he sees how a feature should feel before a single line is written, and that insight has saved us from rebuilding things twice.",
+    name: "E07",
+    role: "Co-founder, Forge",
   },
 ];
 
