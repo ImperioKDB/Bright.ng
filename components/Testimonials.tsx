@@ -22,6 +22,7 @@ export default function Testimonials() {
   const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   const current = testimonials[index];
+  const initial = current.name.trim().charAt(0).toUpperCase();
 
   return (
     <motion.section
@@ -29,39 +30,52 @@ export default function Testimonials() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={fadeUp}
-      className="px-6 md:px-12 max-w-3xl mx-auto py-20 text-center"
+      className="px-6 md:px-12 max-w-3xl mx-auto py-20"
     >
       <div className="flex justify-center">
         <PillBadge className="mb-6">Testimonials 🏅</PillBadge>
       </div>
-      <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text">
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text text-center">
         What people say.
       </h2>
-      <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 bg-accent-gradient bg-clip-text text-transparent">
+      <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 bg-accent-gradient bg-clip-text text-transparent text-center">
         About me.
       </h2>
-
-      <div className="text-6xl text-accent/30 font-display mb-4">"</div>
 
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-          className="min-h-[140px]"
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.35 }}
+          className="relative bg-surface border border-edge rounded-2xl p-8 md:p-10"
         >
-          <p className="text-lg md:text-xl text-text mb-6 leading-relaxed">
+          <div
+            aria-hidden="true"
+            className="absolute -top-5 left-8 w-12 h-12 rounded-full bg-accent-gradient flex items-center justify-center shadow-[0_0_20px_rgba(232,69,60,0.4)]"
+          >
+            <span className="text-bg font-display text-2xl font-black leading-none">"</span>
+          </div>
+
+          <p className="text-lg md:text-xl text-text leading-relaxed mt-6 mb-8">
             {current.quote}
           </p>
-          <p className="font-semibold text-text">{current.name}</p>
-          <p className="text-sm text-muted">{current.role}</p>
+
+          <div className="flex items-center gap-3 pt-6 border-t border-edge">
+            <div className="w-11 h-11 rounded-full bg-accent-gradient flex items-center justify-center flex-shrink-0">
+              <span className="font-display font-bold text-bg text-lg">{initial}</span>
+            </div>
+            <div>
+              <p className="font-semibold text-text">{current.name}</p>
+              <p className="text-sm text-muted">{current.role}</p>
+            </div>
+          </div>
         </motion.div>
       </AnimatePresence>
 
       {hasMultiple && (
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex items-center justify-center gap-6 mt-8">
           <button
             onClick={prev}
             aria-label="Previous testimonial"
