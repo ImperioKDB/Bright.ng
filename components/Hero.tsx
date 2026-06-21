@@ -69,12 +69,12 @@ export default function Hero() {
           See my work →
         </a>
 
-        <p className="text-base text-muted max-w-xl mb-4">
+        <p className="text-base text-text/90 max-w-xl mb-4">
           100-level Software Engineering student at UNIBEN. I build full-stack
           SaaS products, e-commerce platforms, and tools for Nigerian markets.
         </p>
 
-        <p className="text-sm text-muted/70 italic max-w-md">
+        <p className="text-sm text-text/70 italic max-w-md">
           This site — like everything else I build — was made entirely on a
           phone. No laptop, no desktop IDE. Just Colab, GitHub, and patience.
         </p>
