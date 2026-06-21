@@ -27,6 +27,7 @@ export interface Project {
   repoUrl?: string;
   images: string[];
   nextSlug: string;
+  featured: boolean;
 }
 
 export const projects: Project[] = [
@@ -82,6 +83,7 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-merch",
+    featured: true,
   },
   {
     slug: "tacsfon-merch",
@@ -135,6 +137,7 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-bookshop",
+    featured: true,
   },
   {
     slug: "tacsfon-bookshop",
@@ -188,6 +191,7 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "pastq",
+    featured: false,
   },
   {
     slug: "pastq",
@@ -247,5 +251,6 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "forge",
+    featured: true,
   },
 ];
