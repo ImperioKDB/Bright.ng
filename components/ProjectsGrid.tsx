@@ -7,6 +7,8 @@ import { projects } from "@/data/projects";
 import PillBadge from "@/components/PillBadge";
 
 export default function ProjectsGrid() {
+  const featured = projects.filter((p) => p.featured);
+
   return (
     <motion.section
       id="projects"
@@ -33,7 +35,7 @@ export default function ProjectsGrid() {
         viewport={{ once: true, amount: 0.2 }}
         className="grid md:grid-cols-2 gap-6 text-left"
       >
-        {projects.map((project) => (
+        {featured.map((project) => (
           <motion.div key={project.slug} variants={fadeUpItem}>
             <Link
               href={`/projects/${project.slug}`}
@@ -58,9 +60,12 @@ export default function ProjectsGrid() {
       </motion.div>
 
       <div className="flex justify-center md:justify-start mt-10">
-        <a href="#projects" className="text-sm bg-accent-gradient bg-clip-text text-transparent font-medium hover:opacity-80 transition">
+        <Link
+          href="/projects"
+          className="text-sm bg-accent-gradient bg-clip-text text-transparent font-medium hover:opacity-80 transition"
+        >
           ALL PROJECTS →
-        </a>
+        </Link>
       </div>
     </motion.section>
   );
