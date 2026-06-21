@@ -69,9 +69,11 @@ export default function Hero() {
           See my work →
         </a>
 
-        <p className="text-base text-text/90 max-w-xl">
-          100-level Software Engineering student at UNIBEN. I build full-stack
-          SaaS products, e-commerce platforms, and tools for Nigerian markets.
+        <p className="text-base text-text/90 max-w-xl leading-relaxed">
+          Software Engineering student at UNIBEN building full-stack SaaS,
+          e-commerce, and EdTech products for real users across Nigerian
+          markets. Co-founder of an AI coding agent startup and founder of
+          three independently shipped platforms, from concept to production.
         </p>
       </div>
     </motion.section>
