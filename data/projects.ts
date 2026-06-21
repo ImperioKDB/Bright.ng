@@ -78,7 +78,7 @@ export const projects: Project[] = [
     summary:
       "Forge is still early, but the core loop — plan, preview impact, then execute — is working end to end. The next phase is closing out remaining frontend issues (a 0-subtasks edge case, clearer error messaging) and rebuilding the Dependency Graph Explorer into a more focused, file-centric view.",
     stack: ["Next.js", "Fastify", "Supabase", "Tailwind", "Framer Motion"],
-    liveUrl: "",
+    liveUrl: "https://forge-frontend-iota.vercel.app",
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-merch",
@@ -132,6 +132,59 @@ export const projects: Project[] = [
       "The store has reached a largely complete, stable state — build is passing, the order lifecycle works end to end, and the admin dashboard gives the fellowship's team real visibility into sales without needing to read raw database tables.",
     stack: ["Next.js", "Express.js", "Supabase", "Tailwind"],
     liveUrl: "https://tacsfon-merch-two.vercel.app",
+    repoUrl: "",
+    images: [],
+    nextSlug: "tacsfon-bookshop",
+  },
+  {
+    slug: "tacsfon-bookshop",
+    title: "TACSFON Bookshop",
+    category: "E-commerce",
+    status: "Active",
+    description: "Online bookshop for TACSFON, built from a 10-table schema with full auth and order flow.",
+    problem:
+      "TACSFON also needed a dedicated platform for selling Christian literature and study materials to fellowship members — distinct from the merch store, with its own catalog, cart, and checkout logic, plus reliable auth so members could track their own order history.",
+    solution:
+      "I built the Bookshop from scratch as a separate full-stack platform: a 10-table Supabase schema with RLS policies and triggers, a complete Next.js storefront across 9 build phases (auth, cart, checkout, orders, admin, notifications, receipts), Google OAuth via Supabase Auth, and an Express.js backend on Render — plus a manual bank-transfer payment flow once card payment access wasn't available.",
+    myRole:
+      "Solo build, same as the Merch Store — schema design, every phase of the frontend, the Express backend, and the auth integration. This project also involved real debugging work: auth race conditions, cart sync issues, and admin role bugs that only showed up once real fellowship members started using it.",
+    features: [
+      {
+        name: "Google OAuth Authentication",
+        description:
+          "Members sign in with their Google account via Supabase Auth, removing the friction of yet another password to manage for a side platform.",
+      },
+      {
+        name: "Cart & Checkout Flow",
+        description:
+          "A full shopping cart experience with persistent state, leading into a checkout flow that supports manual bank transfer payment confirmation.",
+      },
+      {
+        name: "Order History & Admin Management",
+        description:
+          "Members can track their own past orders, while admins get a dedicated dashboard to confirm payments and manage fulfillment across the full 10-table schema.",
+      },
+    ],
+    technologies: [
+      {
+        category: "Frontend & Framework",
+        description:
+          "Next.js frontend built in 9 sequential phases, deployed on Vercel, covering everything from auth to receipts.",
+        items: ["Next.js", "Tailwind", "TypeScript"],
+      },
+      {
+        category: "Backend & Auth",
+        description:
+          "An Express.js backend on Render handles order and notification logic, with Supabase Auth (including Google OAuth) managing sign-in and a 10-table Postgres schema with RLS and triggers handling data integrity.",
+        items: ["Express.js", "Supabase", "PostgreSQL", "Google OAuth"],
+      },
+    ],
+    monetization:
+      "Like the Merch Store, the Bookshop isn't a SaaS product — it's dedicated infrastructure for TACSFON's literature sales, with proceeds supporting the fellowship directly.",
+    summary:
+      "The Bookshop is live and handling real orders from fellowship members, with the full auth-to-receipt flow working end to end. It was also where most of the hard-won debugging lessons came from — auth race conditions and cart sync issues that later informed how I approached the Merch Store build.",
+    stack: ["Next.js", "Express.js", "Supabase", "Google OAuth", "Tailwind"],
+    liveUrl: "https://tacsfon-bookshop.vercel.app",
     repoUrl: "",
     images: [],
     nextSlug: "pastq",
@@ -190,7 +243,7 @@ export const projects: Project[] = [
     summary:
       "Core upload, extraction, and quiz functionality is live and working. Phase 4 — authentication, Paystack integration, a leaderboard, and notifications — is in progress, moving PastQ from a useful tool toward a platform students actually return to.",
     stack: ["Next.js", "Express.js", "Supabase", "OpenRouter AI"],
-    liveUrl: "",
+    liveUrl: "https://pastq-frontend.vercel.app",
     repoUrl: "",
     images: [],
     nextSlug: "forge",
