@@ -31,8 +31,8 @@ export default function Footer() {
             BRIGHT
           </p>
           <p className="text-sm text-muted max-w-md mx-auto">
-            Full-stack developer building products from the ground up,
-            to solve eveyday problems.
+            Full-stack developer building SaaS, e-commerce, and EdTech
+            products from concept to production.
           </p>
         </div>
 
