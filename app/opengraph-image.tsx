@@ -20,7 +20,6 @@ export default async function OpengraphImage() {
           position: "relative",
         }}
       >
-        {/* Gradient glow, matching the Hero signature element */}
         <div
           style={{
             position: "absolute",
@@ -30,51 +29,21 @@ export default async function OpengraphImage() {
             height: "600px",
             borderRadius: "9999px",
             background:
-              "radial-gradient(circle, rgba(232,119,46,0.45) 0%, rgba(232,119,46,0.15) 45%, rgba(232,119,46,0) 70%)",
+              "radial-gradient(circle, rgba(245,166,35,0.45) 0%, rgba(232,69,60,0.15) 45%, rgba(232,69,60,0) 70%)",
             display: "flex",
           }}
         />
-
-        <div
-          style={{
-            display: "flex",
-            fontSize: 32,
-            color: "#E8772E",
-            fontWeight: 500,
-            marginBottom: 24,
-            letterSpacing: "0.05em",
-          }}
-        >
+        <div style={{ display: "flex", fontSize: 32, color: "#F5A623", fontWeight: 500, marginBottom: 24, letterSpacing: "0.05em" }}>
           BRIGHT.NG
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            fontSize: 72,
-            color: "#F4F2ED",
-            fontWeight: 700,
-            lineHeight: 1.1,
-            maxWidth: "900px",
-          }}
-        >
-          Full-stack developer building products from the ground up.
+        <div style={{ display: "flex", fontSize: 64, color: "#F4F2ED", fontWeight: 700, lineHeight: 1.1, maxWidth: "950px" }}>
+          Full-stack developer building SaaS, e-commerce, and EdTech products.
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            fontSize: 28,
-            color: "#6B6560",
-            marginTop: 32,
-          }}
-        >
+        <div style={{ display: "flex", fontSize: 28, color: "#6B6560", marginTop: 32 }}>
           100-level Software Engineering student — UNIBEN, Nigeria
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size }
   );
 }
