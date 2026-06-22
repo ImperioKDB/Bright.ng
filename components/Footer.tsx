@@ -32,7 +32,7 @@ export default function Footer() {
           </p>
           <p className="text-sm text-muted max-w-md mx-auto">
             Full-stack developer building products from the ground up,
-            entirely from a phone.
+            to solve eveyday problems.
           </p>
         </div>
 
