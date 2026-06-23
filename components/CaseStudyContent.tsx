@@ -5,6 +5,7 @@ import { fadeUp, staggerContainer, fadeUpItem } from "@/lib/motion";
 import type { Project } from "@/data/projects";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import LivePreview from "@/components/LivePreview";
 
 export default function CaseStudyContent({
   project,
@@ -38,7 +39,7 @@ export default function CaseStudyContent({
           </h1>
           <p className="text-lg text-muted mb-10">{project.solution}</p>
 
-          <div className="flex flex-wrap gap-4 mb-16">
+          <div className="flex flex-wrap gap-4 mb-10">
             <a
               href="#problem"
               onClick={(e) => {
@@ -62,6 +63,19 @@ export default function CaseStudyContent({
           </div>
         </motion.div>
 
+        {/* Live iframe preview — shown only if liveUrl exists */}
+        {project.liveUrl && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mb-16"
+          >
+            <LivePreview url={project.liveUrl} />
+          </motion.div>
+        )}
+
+        {/* Static image gallery, if any screenshots were added */}
         {project.images.length > 0 && (
           <motion.div
             initial="hidden"
