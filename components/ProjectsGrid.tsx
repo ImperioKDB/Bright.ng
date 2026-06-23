@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, fadeUpItem } from "@/lib/motion";
 import { projects } from "@/data/projects";
 import PillBadge from "@/components/PillBadge";
+import LivePreview from "@/components/LivePreview";
 
 export default function ProjectsGrid() {
   const featured = projects.filter((p) => p.featured);
@@ -39,21 +40,30 @@ export default function ProjectsGrid() {
           <motion.div key={project.slug} variants={fadeUpItem}>
             <Link
               href={`/projects/${project.slug}`}
-              className="block bg-surface border border-edge rounded-2xl p-6 transition-colors duration-200 hover:border-text/30"
+              className="block bg-surface border border-edge rounded-2xl overflow-hidden transition-colors duration-200 hover:border-text/30"
             >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs px-2.5 py-1 bg-bg border border-edge rounded-full text-muted font-mono">
-                  {project.category}
-                </span>
-                <span className="text-xs px-2.5 py-1 bg-accent-gradient text-bg rounded-full font-mono font-semibold">
-                  {project.status}
+              {/* Live preview thumbnail at top of card */}
+              {project.liveUrl && (
+                <div className="pointer-events-none">
+                  <LivePreview url={project.liveUrl} compact={true} />
+                </div>
+              )}
+
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs px-2.5 py-1 bg-bg border border-edge rounded-full text-muted font-mono">
+                    {project.category}
+                  </span>
+                  <span className="text-xs px-2.5 py-1 bg-accent-gradient text-bg rounded-full font-mono font-semibold">
+                    {project.status}
+                  </span>
+                </div>
+                <h3 className="font-display text-xl font-semibold mb-2 text-text">{project.title}</h3>
+                <p className="text-muted text-sm">{project.description}</p>
+                <span className="inline-block mt-4 text-sm bg-accent-gradient bg-clip-text text-transparent font-medium">
+                  View case study →
                 </span>
               </div>
-              <h3 className="font-display text-xl font-semibold mb-2 text-text">{project.title}</h3>
-              <p className="text-muted text-sm">{project.description}</p>
-              <span className="inline-block mt-4 text-sm bg-accent-gradient bg-clip-text text-transparent font-medium">
-                View case study →
-              </span>
             </Link>
           </motion.div>
         ))}
