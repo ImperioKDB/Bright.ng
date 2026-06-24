@@ -48,7 +48,7 @@ export default function Footer() {
           <div>
             <p className="text-xs uppercase tracking-widest text-muted mb-4 font-mono">Connect</p>
             <div className="flex flex-col gap-2 text-sm text-muted">
-              <a href="mailto:bright@brightng.dev" className="hover:text-text transition">Email</a>
+              <a href="mailto:kingbrite123@gmail.com" className="hover:text-text transition">Email</a>
               <a href="https://github.com/ImperioKDB" target="_blank" rel="noopener noreferrer" className="hover:text-text transition">GitHub</a>
             </div>
           </div>
