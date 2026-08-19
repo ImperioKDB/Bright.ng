@@ -64,7 +64,7 @@ export const projects: Project[] = [
       {
         category: "Frontend & Framework",
         description:
-          "Built on Next.js App Router for routing and server components, styled with Tailwind, animated with Framer Motion for transitions that feel deliberate rather than decorative.",
+          "Built on Next.js App Router for routing and server components, styled with Tailwind, animated with Framer Motion.",
         items: ["Next.js", "Tailwind", "Framer Motion", "TypeScript"],
       },
       {
@@ -77,9 +77,74 @@ export const projects: Project[] = [
     monetization:
       "Forge is structured as a subscription SaaS, with tiered access based on usage volume — the kind of model that scales with how much a team actually relies on the tool, rather than charging per seat regardless of use.",
     summary:
-      "Forge is still early, but the core loop — plan, preview impact, then execute — is working end to end. The next phase is closing out remaining frontend issues (a 0-subtasks edge case, clearer error messaging) and rebuilding the Dependency Graph Explorer into a more focused, file-centric view.",
+      "Forge is still early, but the core loop — plan, preview impact, then execute — is working end to end. The next phase is closing out remaining frontend issues and rebuilding the Dependency Graph Explorer into a more focused, file-centric view.",
     stack: ["Next.js", "Fastify", "Supabase", "Tailwind", "Framer Motion"],
     liveUrl: "https://forge-frontend-iota.vercel.app",
+    repoUrl: "",
+    images: [],
+    nextSlug: "levyledger",
+    featured: true,
+  },
+  {
+    slug: "levyledger",
+    title: "LevyLedger",
+    category: "Web3 / Civic Tech",
+    status: "Active",
+    description: "On-chain treasury transparency for University of Benin faculty student unions — built on Solana.",
+    problem:
+      "Every semester, faculty student unions at Nigerian universities collect levies from students — union dues, faculty fees, departmental charges. Millions of naira move through student executives with zero public accountability: no receipts, no audit trail, no records that survive a handover. When the exco changes, the financial history usually disappears with them. Students have no way to verify anything without simply trusting whoever is currently in charge.",
+    solution:
+      "LevyLedger deploys one on-chain treasury per faculty on Solana, controlled by a 3-of-5 executive multisig. Deposits are hybrid — execs can deposit collected off-chain levies, or any student with a wallet can deposit directly. Spending requires 3 of 5 executive signatures, at which point the smart contract — not any person — automatically transfers the funds. Every deposit, proposal, signature, and payment is permanently on-chain and publicly readable by anyone, no wallet or login required.",
+    myRole:
+      "I designed and built LevyLedger solo — the Solana program in Rust/Anchor, the full Next.js frontend, and the Supabase identity layer. The architecture was entirely my own call: choosing Solana for low transaction costs and programmable custody, drawing the trust boundary so Supabase could never become a second ledger, and designing the multisig flow so no single executive can unilaterally release funds. This is the most technically complex project I've shipped.",
+    features: [
+      {
+        name: "3-of-5 Multisig Treasury",
+        description:
+          "Any exec can propose a payment. The moment the third signature lands, the smart contract auto-executes the USDC transfer — no human releases the money. Single-exec theft is architecturally impossible.",
+      },
+      {
+        name: "Permissionless Public Audit",
+        description:
+          "Any student, journalist, or incoming exec can open a faculty's page with no wallet and no login and see the live balance, every proposal, every signature, and every executed payment — permanently, on-chain.",
+      },
+      {
+        name: "Hybrid Deposits",
+        description:
+          "Execs can deposit collected off-chain levies, or students can deposit their dues directly via wallet — closing the gap where money could disappear between 'collected' and 'recorded.'",
+      },
+      {
+        name: "Built-in Devnet Faucet",
+        description:
+          "A one-tap devnet USDC button lets anyone test the deposit flow without needing an external faucet — lowering the barrier to actually try the product.",
+      },
+    ],
+    technologies: [
+      {
+        category: "Blockchain / Smart Contract",
+        description:
+          "The treasury logic lives in a Rust program built with Anchor, deployed to Solana Devnet. The program controls five instructions: init_treasury, deposit, create_proposal, sign_proposal (auto-executes at 3-of-5), and expire_proposal. The vault's authority is the program itself — no individual wallet holds custody.",
+        items: ["Rust", "Anchor", "Solana", "SPL Token (USDC)"],
+      },
+      {
+        category: "Frontend & Wallet Integration",
+        description:
+          "A Next.js 14 App Router frontend handles both public read-only views (no wallet needed) and wallet-gated exec/admin actions, using Solana's wallet adapter for browser wallet connections.",
+        items: ["Next.js", "Tailwind", "TypeScript", "@coral-xyz/anchor", "@solana/wallet-adapter-react"],
+      },
+      {
+        category: "Identity & Infrastructure",
+        description:
+          "Supabase stores only identity data (wallet address ↔ name ↔ matric number) and the faculty-registration request queue. It deliberately never holds balance or transaction data — those are always read live from the chain, so Supabase becoming unavailable would never affect financial history.",
+        items: ["Supabase", "Vercel"],
+      },
+    ],
+    monetization:
+      "LevyLedger is civic infrastructure, not a SaaS product. The v1 release is free for UNIBEN faculties. A future model could involve a small protocol fee on executed proposals — a fraction of a cent per transaction on Solana — but the primary goal is adoption and accountability, not revenue extraction from student unions.",
+    summary:
+      "LevyLedger is live on Solana Devnet with a deployed program at address 4Av48RVmUb2U5V3jqkEC15C5cbjNRY2TqD64ebc1jn1M, verifiable on Solana Explorer. The architecture is mainnet-ready in structure but needs a security audit and a solved fiat-to-USDC on-ramp before a real-money deployment. Planned v2 features include on-chain signer rotation for exco handovers, a cross-faculty transparency leaderboard, and downloadable verifiable handover certificates.",
+    stack: ["Rust", "Anchor", "Solana", "Next.js", "Tailwind", "Supabase"],
+    liveUrl: "https://levyledger.vercel.app",
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-merch",
@@ -92,11 +157,11 @@ export const projects: Project[] = [
     status: "Active",
     description: "Merchandise e-commerce platform with admin dashboard and order tracking.",
     problem:
-      "TACSFON, my campus fellowship at the University of Benin, needed a way to sell branded merchandise online. Card payment infrastructure isn't always reliable for community groups in Nigeria, so the store had to support manual bank transfer with a real verification step — not just a checkout that assumes Stripe is an option.",
+      "TACSFON, my campus fellowship at the University of Benin, needed a way to sell branded merchandise online. Card payment infrastructure isn't always reliable for community groups in Nigeria, so the store had to support manual bank transfer with a real verification step.",
     solution:
-      "I built a full storefront with proof-of-payment upload, an admin dashboard to confirm orders, and status tracking that moves an order from pending payment through to dispatched and received. The whole flow respects how people actually pay for things in this context: transfer first, upload your receipt, wait for confirmation.",
+      "I built a full storefront with proof-of-payment upload, an admin dashboard to confirm orders, and status tracking that moves an order from pending payment through to dispatched and received.",
     myRole:
-      "I built this solo, end to end — frontend, backend, and database design — as a fellowship project for TACSFON. That meant making every call: how order statuses should flow, what the admin dashboard needed to surface, and how to keep the storefront fast on the kind of mobile connections most students actually use.",
+      "I built this solo, end to end — frontend, backend, and database design. That meant making every call: how order statuses should flow, what the admin dashboard needed to surface, and how to keep the storefront fast on mobile connections.",
     features: [
       {
         name: "Proof of Payment Upload",
@@ -106,12 +171,12 @@ export const projects: Project[] = [
       {
         name: "Admin Order Dashboard",
         description:
-          "A secured admin view for confirming payments, updating order status, and tracking everything from pending payment through to received, backed by Supabase RLS so only verified admins can act on orders.",
+          "A secured admin view for confirming payments and updating order status, backed by Supabase RLS so only verified admins can act on orders.",
       },
       {
         name: "Status-Driven Order Tracking",
         description:
-          "Every order moves through a defined lifecycle — pending payment, payment submitted, confirmed, dispatched, received, or cancelled — so customers always know where their order stands.",
+          "Every order moves through a defined lifecycle — pending payment, payment submitted, confirmed, dispatched, received, or cancelled.",
       },
     ],
     technologies: [
@@ -124,14 +189,14 @@ export const projects: Project[] = [
       {
         category: "Backend & Storage",
         description:
-          "Express.js API routes handle order logic, with Supabase managing auth, the Postgres database, and dedicated storage buckets for product assets, proof uploads, and receipts.",
+          "Express.js API routes handle order logic, with Supabase managing auth, the Postgres database, and dedicated storage buckets for product assets and proof uploads.",
         items: ["Express.js", "Supabase", "PostgreSQL"],
       },
     ],
     monetization:
-      "TACSFON Merch isn't a SaaS product — it's infrastructure for a single organization's merchandise sales, with all proceeds going directly to the fellowship rather than being extracted as platform revenue.",
+      "TACSFON Merch isn't a SaaS product — it's infrastructure for a single organization's merchandise sales, with all proceeds going directly to the fellowship.",
     summary:
-      "The store has reached a largely complete, stable state — build is passing, the order lifecycle works end to end, and the admin dashboard gives the fellowship's team real visibility into sales without needing to read raw database tables.",
+      "The store has reached a largely complete, stable state — build is passing, the order lifecycle works end to end, and the admin dashboard gives the fellowship's team real visibility into sales.",
     stack: ["Next.js", "Express.js", "Supabase", "Tailwind"],
     liveUrl: "https://tacsfon-merch-two.vercel.app",
     repoUrl: "",
@@ -146,16 +211,16 @@ export const projects: Project[] = [
     status: "Active",
     description: "Online bookshop for TACSFON, built from a 10-table schema with full auth and order flow.",
     problem:
-      "TACSFON also needed a dedicated platform for selling Christian literature and study materials to fellowship members — distinct from the merch store, with its own catalog, cart, and checkout logic, plus reliable auth so members could track their own order history.",
+      "TACSFON needed a dedicated platform for selling Christian literature and study materials to fellowship members — distinct from the merch store, with its own catalog, cart, and checkout logic, plus reliable auth so members could track their own order history.",
     solution:
-      "I built the Bookshop from scratch as a separate full-stack platform: a 10-table Supabase schema with RLS policies and triggers, a complete Next.js storefront across 9 build phases (auth, cart, checkout, orders, admin, notifications, receipts), Google OAuth via Supabase Auth, and an Express.js backend on Render — plus a manual bank-transfer payment flow once card payment access wasn't available.",
+      "I built the Bookshop from scratch: a 10-table Supabase schema with RLS policies and triggers, a complete Next.js storefront across 9 build phases, Google OAuth via Supabase Auth, and an Express.js backend on Render.",
     myRole:
-      "Solo build, same as the Merch Store — schema design, every phase of the frontend, the Express backend, and the auth integration. This project also involved real debugging work: auth race conditions, cart sync issues, and admin role bugs that only showed up once real fellowship members started using it.",
+      "Solo build — schema design, every phase of the frontend, the Express backend, and the auth integration. This project involved real debugging work: auth race conditions, cart sync issues, and admin role bugs that only showed up once real fellowship members started using it.",
     features: [
       {
         name: "Google OAuth Authentication",
         description:
-          "Members sign in with their Google account via Supabase Auth, removing the friction of yet another password to manage for a side platform.",
+          "Members sign in with their Google account via Supabase Auth, removing the friction of yet another password.",
       },
       {
         name: "Cart & Checkout Flow",
@@ -165,7 +230,7 @@ export const projects: Project[] = [
       {
         name: "Order History & Admin Management",
         description:
-          "Members can track their own past orders, while admins get a dedicated dashboard to confirm payments and manage fulfillment across the full 10-table schema.",
+          "Members can track their own past orders, while admins get a dedicated dashboard to confirm payments and manage fulfillment.",
       },
     ],
     technologies: [
@@ -178,14 +243,14 @@ export const projects: Project[] = [
       {
         category: "Backend & Auth",
         description:
-          "An Express.js backend on Render handles order and notification logic, with Supabase Auth (including Google OAuth) managing sign-in and a 10-table Postgres schema with RLS and triggers handling data integrity.",
+          "An Express.js backend on Render handles order and notification logic, with Supabase Auth (including Google OAuth) managing sign-in and a 10-table Postgres schema with RLS.",
         items: ["Express.js", "Supabase", "PostgreSQL", "Google OAuth"],
       },
     ],
     monetization:
-      "Like the Merch Store, the Bookshop isn't a SaaS product — it's dedicated infrastructure for TACSFON's literature sales, with proceeds supporting the fellowship directly.",
+      "Like the Merch Store, the Bookshop isn't a SaaS product — it's dedicated infrastructure for TACSFON's literature sales.",
     summary:
-      "The Bookshop is live and handling real orders from fellowship members, with the full auth-to-receipt flow working end to end. It was also where most of the hard-won debugging lessons came from — auth race conditions and cart sync issues that later informed how I approached the Merch Store build.",
+      "The Bookshop is live and handling real orders from fellowship members, with the full auth-to-receipt flow working end to end.",
     stack: ["Next.js", "Express.js", "Supabase", "Google OAuth", "Tailwind"],
     liveUrl: "https://tacsfon-bookshop.vercel.app",
     repoUrl: "",
@@ -200,52 +265,51 @@ export const projects: Project[] = [
     status: "Active",
     description: "Nigerian university past questions platform with AI-powered extraction and quiz mode.",
     problem:
-      "Students at Nigerian universities struggle to find organized, searchable past exam questions. What exists is scattered across scanned PDFs shared in WhatsApp groups — unsearchable, unorganized, and easy to lose track of right when you need it most, during exam prep.",
+      "Students at Nigerian universities struggle to find organized, searchable past exam questions. What exists is scattered across scanned PDFs shared in WhatsApp groups — unsearchable, unorganized, and easy to lose during exam prep.",
     solution:
-      "PastQ lets students upload past question PDFs, uses AI to extract and structure individual questions automatically, and turns scanned documents into a searchable, filterable quiz experience organized by course. What used to be a forwarded PDF becomes something you can actually study from.",
+      "PastQ lets students upload past question PDFs, uses AI to extract and structure individual questions automatically, and turns scanned documents into a searchable, filterable quiz experience organized by course.",
     myRole:
-      "I founded and built PastQ solo — product direction, the AI extraction pipeline, and the full-stack implementation. The hardest part wasn't the UI, it was getting AI extraction reliable enough across messy, inconsistently formatted scanned PDFs that real students actually upload.",
+      "I founded and built PastQ solo — product direction, the AI extraction pipeline, and the full-stack implementation. The hardest part was getting AI extraction reliable enough across messy, inconsistently formatted scanned PDFs.",
     features: [
       {
         name: "AI-Powered Question Extraction",
         description:
-          "Upload a PDF and the system extracts individual questions automatically, using a primary model with a fallback list so extraction stays reliable even when one model underperforms on a given document.",
+          "Upload a PDF and the system extracts individual questions automatically, using a primary model with a fallback list for reliability.",
       },
       {
         name: "Quiz Mode",
         description:
-          "Extracted questions become an interactive quiz experience, letting students test themselves against real past questions instead of just reading through a static document.",
+          "Extracted questions become an interactive quiz experience, letting students test themselves against real past questions.",
       },
       {
         name: "Browse & Filter by Course",
         description:
-          "Questions are organized and filterable by course, so finding relevant past questions doesn't mean scrolling through a years-old WhatsApp group history.",
+          "Questions are organized and filterable by course, so finding relevant past questions is instant.",
       },
     ],
     technologies: [
       {
         category: "Frontend & Framework",
-        description:
-          "A Next.js frontend deployed on Vercel handles upload, browse, and quiz interfaces.",
+        description: "A Next.js frontend deployed on Vercel handles upload, browse, and quiz interfaces.",
         items: ["Next.js", "Tailwind", "TypeScript"],
       },
       {
         category: "AI Integration Pipeline",
         description:
-          "Question extraction runs through OpenRouter, using a free-tier vision-language model as the primary extractor with a configured fallback model list to keep extraction working if the primary model is unavailable.",
+          "Question extraction runs through OpenRouter, using a free-tier vision-language model with a configured fallback model list.",
         items: ["OpenRouter AI", "nvidia/nemotron-nano-12b-v2-vl"],
       },
       {
         category: "Backend & Storage",
         description:
-          "An Express.js backend on Render handles PDF processing and extraction orchestration, with Supabase managing the database and storing structured question data.",
+          "An Express.js backend on Render handles PDF processing and extraction orchestration, with Supabase managing the database.",
         items: ["Express.js", "Supabase", "PostgreSQL"],
       },
     ],
     monetization:
-      "PastQ is moving toward a Paystack-powered model for premium features — likely unlimited quiz attempts or expanded course access — while keeping core browsing free, since the goal is wide student adoption first.",
+      "PastQ is moving toward a Paystack-powered model for premium features, while keeping core browsing free for wide student adoption.",
     summary:
-      "Core upload, extraction, and quiz functionality is live and working. Phase 4 — authentication, Paystack integration, a leaderboard, and notifications — is in progress, moving PastQ from a useful tool toward a platform students actually return to.",
+      "Core upload, extraction, and quiz functionality is live. Phase 4 — authentication, Paystack integration, a leaderboard, and notifications — is in progress.",
     stack: ["Next.js", "Express.js", "Supabase", "OpenRouter AI"],
     liveUrl: "https://pastq-frontend.vercel.app",
     repoUrl: "",
