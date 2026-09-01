@@ -50,13 +50,16 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-sm text-muted">
               <a href="mailto:kingbrite123@gmail.com" className="hover:text-text transition">Email</a>
               <a href="https://github.com/ImperioKDB" target="_blank" rel="noopener noreferrer" className="hover:text-text transition">GitHub</a>
+              <a href="https://www.facebook.com/lordabolaji.bright" target="_blank" rel="noopener noreferrer" className="hover:text-text transition">Facebook</a>
+              <a href="https://wa.me/2349127392937" target="_blank" rel="noopener noreferrer" className="hover:text-text transition">WhatsApp</a>
+              <a href="https://www.instagram.com/abolaji7868?igsi=MTUxbW9pZWI1NmhvNg==" target="_blank" rel="noopener noreferrer" className="hover:text-text transition">Instagram</a>
             </div>
           </div>
           <div>
             <p className="text-xs uppercase tracking-widest text-muted mb-4 font-mono">Projects</p>
             <div className="flex flex-col gap-2 text-sm text-muted">
               <a href="/projects/forge" className="hover:text-text transition">Forge</a>
-              <a href="/projects/pastq" className="hover:text-text transition">PastQ</a>
+              <a href="/projects/scholars" className="hover:text-text transition">Scholars</a>
               <a href="/projects/tacsfon-merch" className="hover:text-text transition">TACSFON Merch</a>
             </div>
           </div>
