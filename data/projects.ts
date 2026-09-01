@@ -314,6 +314,60 @@ export const projects: Project[] = [
     liveUrl: "https://pastq-frontend.vercel.app",
     repoUrl: "",
     images: [],
+    nextSlug: "scholars",
+    featured: true,
+  },
+  {
+    slug: "scholars",
+    title: "Scholars",
+    category: "EdTech",
+    status: "Active",
+    description: "Operating system for scholarship discovery and applications — Next.js, Fastify, PostgreSQL.",
+    problem:
+      "Students hunting for scholarships face the same problem again and again: opportunities are scattered across university websites, forums, and social media, every application has different requirements, and there's no single place to track deadlines, documents, or progress across multiple applications at once.",
+    solution:
+      "Scholars centralizes scholarship discovery and application management. Students build a profile once, get matched to relevant scholarships, manage every application's status from one dashboard, and store documents in a shared vault instead of re-uploading transcripts and essays for every new application.",
+    myRole:
+      "I'm the founder, driving the full product spec and architecture — the 8-feature MVP scope, database schema, and technical roadmap — building backend and database work first, before frontend.",
+    features: [
+      {
+        name: "Scholarship Matching",
+        description:
+          "Students build a profile once, and the platform surfaces scholarships that match their background and eligibility instead of making them search manually.",
+      },
+      {
+        name: "Application Management Dashboard",
+        description:
+          "A single dashboard tracks every application's status and deadline, replacing scattered spreadsheets and browser tabs.",
+      },
+      {
+        name: "Document Vault",
+        description:
+          "Transcripts, essays, and recommendation letters are stored once and reused across applications instead of being re-uploaded every time.",
+      },
+    ],
+    technologies: [
+      {
+        category: "Frontend & Framework",
+        description:
+          "A Next.js frontend handles profile setup, scholarship discovery, and application tracking.",
+        items: ["Next.js"],
+      },
+      {
+        category: "Backend & Data",
+        description:
+          "A Fastify backend runs on PostgreSQL with Supabase Auth for sign-in, Redis for caching, and Cloudflare R2 for document storage.",
+        items: ["Fastify", "PostgreSQL", "Supabase Auth", "Redis", "Cloudflare R2"],
+      },
+    ],
+    monetization:
+      "Still early-stage — the current focus is MVP adoption across the first cohort of users before a monetization model is finalized.",
+    summary:
+      "The MVP is scoped as eight core features, with backend and database work happening first. The live landing page is up, with a roadmap running from MVP through application management, scholarship intelligence, a marketplace, and eventual Africa-wide and global expansion.",
+    stack: ["Next.js", "Fastify", "PostgreSQL", "Supabase", "Redis", "Cloudflare R2"],
+    liveUrl: "https://scholars-eight.vercel.app",
+    repoUrl: "",
+    images: [],
     nextSlug: "forge",
     featured: true,
   },
