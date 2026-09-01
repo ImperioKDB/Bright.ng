@@ -8,13 +8,6 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    company: "PastQ",
-    role: "Founder",
-    location: "Benin City, Nigeria",
-    startDate: "Apr 2026",
-    endDate: "Present",
-  },
-  {
     company: "TACSFON Bookshop",
     role: "Builder, TACSFON",
     location: "University of Benin",
@@ -29,17 +22,24 @@ export const experience: Experience[] = [
     endDate: "Present",
   },
   {
-    company: "Web Dev Teaching",
-    role: "Instructor, Mobile-first Basics",
-    location: "Remote",
-    startDate: "May 2026",
-    endDate: "Present",
-  },
-  {
     company: "Forge",
     role: "Co-founder",
     location: "Remote",
     startDate: "Jun 2026",
+    endDate: "Present",
+  },
+  {
+    company: "LevyLedger",
+    role: "Founder & Builder",
+    location: "University of Benin",
+    startDate: "Jul 2026",
+    endDate: "Present",
+  },
+  {
+    company: "Scholars",
+    role: "Founder",
+    location: "Benin City, Nigeria",
+    startDate: "Aug 2026",
     endDate: "Present",
   },
 ];
