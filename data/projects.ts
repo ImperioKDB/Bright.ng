@@ -322,51 +322,51 @@ export const projects: Project[] = [
     title: "Scholars",
     category: "EdTech",
     status: "Active",
-    description: "Operating system for scholarship discovery and applications — Next.js, Fastify, PostgreSQL.",
+    description: "Scholarship discovery and application platform — Next.js, Supabase, PostgreSQL.",
     problem:
       "Students hunting for scholarships face the same problem again and again: opportunities are scattered across university websites, forums, and social media, every application has different requirements, and there's no single place to track deadlines, documents, or progress across multiple applications at once.",
     solution:
-      "Scholars centralizes scholarship discovery and application management. Students build a profile once, get matched to relevant scholarships, manage every application's status from one dashboard, and store documents in a shared vault instead of re-uploading transcripts and essays for every new application.",
+      "Scholars brings scholarship discovery into one focused workflow. Students create a profile, discover opportunities they are eligible for, save the right ones, and track applications and deadlines from a single dashboard.",
     myRole:
-      "I'm the founder, driving the full product spec and architecture — the 8-feature MVP scope, database schema, and technical roadmap — building backend and database work first, before frontend.",
+      "I'm the founder and full-stack builder, responsible for the product direction, data model, authentication, discovery experience, application tracking, admin workflows, and production delivery.",
     features: [
       {
-        name: "Scholarship Matching",
+        name: "Personalized Discovery",
         description:
-          "Students build a profile once, and the platform surfaces scholarships that match their background and eligibility instead of making them search manually.",
+          "A structured student profile powers eligibility-aware discovery, helping students spend less time searching through opportunities that do not fit their background.",
       },
       {
-        name: "Application Management Dashboard",
+        name: "Application Tracking",
         description:
-          "A single dashboard tracks every application's status and deadline, replacing scattered spreadsheets and browser tabs.",
+          "Students can save opportunities and keep application statuses and deadlines visible from one dashboard instead of relying on scattered notes and browser tabs.",
       },
       {
-        name: "Document Vault",
+        name: "Verified Scholarship Catalogue",
         description:
-          "Transcripts, essays, and recommendation letters are stored once and reused across applications instead of being re-uploaded every time.",
+          "Admin review and evidence-aware listing workflows keep the catalogue useful and give students clearer paths to the source and application details.",
       },
     ],
     technologies: [
       {
         category: "Frontend & Framework",
         description:
-          "A Next.js frontend handles profile setup, scholarship discovery, and application tracking.",
-        items: ["Next.js"],
+          "A Next.js App Router frontend powers the public landing pages, onboarding, discovery, dashboard, applications, and admin surfaces.",
+        items: ["Next.js", "TypeScript", "Tailwind CSS"],
       },
       {
         category: "Backend & Data",
         description:
-          "A Fastify backend runs on PostgreSQL with Supabase Auth for sign-in, Redis for caching, and Cloudflare R2 for document storage.",
-        items: ["Fastify", "PostgreSQL", "Supabase Auth", "Redis", "Cloudflare R2"],
+          "Supabase provides authentication and PostgreSQL data access, with background workflows and rate limiting supporting reliable production operations.",
+        items: ["Supabase", "PostgreSQL", "Supabase Auth", "Inngest", "Upstash Redis"],
       },
     ],
     monetization:
       "Still early-stage — the current focus is MVP adoption across the first cohort of users before a monetization model is finalized.",
     summary:
-      "The MVP is scoped as eight core features, with backend and database work happening first. The live landing page is up, with a roadmap running from MVP through application management, scholarship intelligence, a marketplace, and eventual Africa-wide and global expansion.",
-    stack: ["Next.js", "Fastify", "PostgreSQL", "Supabase", "Redis", "Cloudflare R2"],
-    liveUrl: "https://scholars-eight.vercel.app",
-    repoUrl: "",
+      "Scholars is live at scholars.com.ng, with a public discovery experience and authenticated product flows for onboarding, profiles, saved opportunities, applications, and administration. The project is being developed toward a broader scholarship intelligence platform for students across Africa.",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Inngest", "Upstash Redis"],
+    liveUrl: "https://www.scholars.com.ng",
+    repoUrl: "https://github.com/ImperioKDB/Scholars",
     images: [],
     nextSlug: "forge",
     featured: true,
