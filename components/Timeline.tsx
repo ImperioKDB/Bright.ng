@@ -16,7 +16,7 @@ export default function Timeline() {
       className="px-6 md:px-12 max-w-5xl mx-auto py-20"
     >
       <div className="flex justify-center md:justify-start">
-        <PillBadge className="mb-6">Work Experience 💼</PillBadge>
+        <PillBadge className="mb-6">About</PillBadge>
       </div>
 
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text text-center md:text-left">
@@ -55,10 +55,11 @@ export default function Timeline() {
             className="flex items-start gap-4 py-6 border-b border-edge last:border-b-0"
           >
             <div className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0" />
-            <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <div className="flex-1 flex flex-col md:flex-row md:items-start md:justify-between gap-3">
               <div>
                 <h3 className="font-display font-semibold text-text">{exp.company}</h3>
                 <p className="text-muted text-sm">{exp.role}</p>
+                <p className="text-muted text-sm leading-relaxed max-w-xl mt-2">{exp.description}</p>
               </div>
               <div className="text-left md:text-right">
                 <p className="text-sm text-muted font-mono whitespace-nowrap">

@@ -8,9 +8,21 @@ import PillBadge from "@/components/PillBadge";
 const testimonials = [
   {
     quote:
-      "Bright's instincts for frontend architecture shaped Forge from the ground up. He doesn't just implement — he sees how a feature should feel before a single line is written, and that insight has saved us from rebuilding things twice.",
-    name: "E07",
-    role: "Co-founder, Forge",
+      "I tried the app, Scholars, and I find it helpful. It saves a lot of time and stress. Everything works smoothly, it is student friendly and you don't have to waste time scrolling through lots of scholarships which you are not qualified for.",
+    name: "Rose Otaru",
+    role: "200 Level, University of Benin",
+  },
+  {
+    quote:
+      "It's a very good app. It is easy to operate and it saves one the stress of having to search on sites and make long research on scholarship requirements.",
+    name: "Gold Olawole",
+    role: "200 Level, Federal University of Technology, Akure",
+  },
+  {
+    quote:
+      "I love Scholars. What I love is that it matches you to opportunities according to your portfolio.",
+    name: "Esther Olawole",
+    role: "Miva University",
   },
 ];
 
@@ -33,13 +45,13 @@ export default function Testimonials() {
       className="px-6 md:px-12 max-w-3xl mx-auto py-20"
     >
       <div className="flex justify-center">
-        <PillBadge className="mb-6">Testimonials 🏅</PillBadge>
+        <PillBadge className="mb-6">Student feedback</PillBadge>
       </div>
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text text-center">
-        What people say.
+        What students say.
       </h2>
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 bg-accent-gradient bg-clip-text text-transparent text-center">
-        About me.
+        After using Scholars.
       </h2>
 
       <AnimatePresence mode="wait">

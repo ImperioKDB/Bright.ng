@@ -22,13 +22,13 @@ export default function ProjectsGrid() {
       className="px-6 md:px-12 max-w-5xl mx-auto py-20 text-center md:text-left"
     >
       <div className="flex justify-center md:justify-start">
-        <PillBadge className="mb-6">My Works 🤩</PillBadge>
+        <PillBadge className="mb-6">Selected work</PillBadge>
       </div>
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text">
-        Projects I've worked on.
+        Products I&apos;ve actually shipped.
       </h2>
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-10 bg-accent-gradient bg-clip-text text-transparent">
-        At a glance.
+        Beyond the demo.
       </h2>
 
       <motion.div

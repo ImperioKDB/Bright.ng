@@ -37,10 +37,10 @@ export default async function OpengraphImage() {
           BRIGHT.NG
         </div>
         <div style={{ display: "flex", fontSize: 64, color: "#F4F2ED", fontWeight: 700, lineHeight: 1.1, maxWidth: "950px" }}>
-          Full-stack developer building SaaS, e-commerce, and EdTech products.
+          Full-stack developer building products that have to work outside the demo.
         </div>
         <div style={{ display: "flex", fontSize: 28, color: "#6B6560", marginTop: 32 }}>
-          100-level Software Engineering student — UNIBEN, Nigeria
+          Building Scholars and useful products — UNIBEN, Nigeria
         </div>
       </div>
     ),

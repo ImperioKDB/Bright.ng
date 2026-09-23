@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Bright — Full-stack Developer",
   description:
-    "Software Engineering student at UNIBEN building full-stack SaaS, e-commerce, and EdTech products for real users across Nigerian markets.",
+    "Bright is a full-stack developer and Software Engineering student at UNIBEN building Scholars and useful products for real users.",
   openGraph: {
     title: "Bright — Full-stack Developer",
     description:
-      "Full-stack developer building SaaS, e-commerce, and EdTech products from concept to production.",
+      "Full-stack developer building products that have to work outside the demo.",
     url: "https://brightng.vercel.app",
     siteName: "Bright",
     type: "website",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bright — Full-stack Developer",
     description:
-      "Full-stack developer building SaaS, e-commerce, and EdTech products from concept to production.",
+      "Full-stack developer building products that have to work outside the demo.",
   },
 };
 

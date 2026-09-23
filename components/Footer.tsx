@@ -28,7 +28,7 @@ export default function Footer() {
     >
       <div className="text-center mb-12">
         <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-text">
-          Have a project<br />in mind?
+          Building something<br />real?
         </h2>
         <p className="text-muted max-w-xl mx-auto leading-relaxed mb-6">
           Tell me what you&apos;re building, what is currently stuck, and where
@@ -71,8 +71,8 @@ export default function Footer() {
             BRIGHT
           </p>
           <p className="text-sm text-muted max-w-md mx-auto">
-            Full-stack developer building Scholars and other useful products
-            from concept to production.
+            Full-stack developer building products that have to work outside
+            the demo.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function Footer() {
           <div>
             <p className="text-xs uppercase tracking-widest text-muted mb-4 font-mono">Status</p>
             <div className="flex flex-col gap-2 text-sm text-muted">
-              <span>100-level, UNIBEN</span>
+              <span>Software Engineering · UNIBEN</span>
               <span>Benin City, Nigeria</span>
             </div>
           </div>
