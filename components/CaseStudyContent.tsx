@@ -71,7 +71,7 @@ export default function CaseStudyContent({
             variants={fadeUp}
             className="mb-16"
           >
-            <LivePreview url={project.liveUrl} />
+            <LivePreview url={project.liveUrl} previewImage={project.previewImage} />
           </motion.div>
         )}
 

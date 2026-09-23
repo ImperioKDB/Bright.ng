@@ -5,9 +5,11 @@ import { useState } from "react";
 export default function LivePreview({
   url,
   compact = false,
+  previewImage,
 }: {
   url: string;
   compact?: boolean;
+  previewImage?: string;
 }) {
   const [blocked, setBlocked] = useState(false);
   const displayUrl = url.replace("https://", "");
@@ -54,7 +56,13 @@ export default function LivePreview({
         className="relative w-full overflow-hidden bg-white"
         style={{ height: frameHeight }}
       >
-        {!blocked ? (
+        {previewImage ? (
+          <img
+            src={previewImage}
+            alt=""
+            className="absolute top-0 left-0 w-full h-full object-cover object-top"
+          />
+        ) : !blocked ? (
           <iframe
             src={url}
             title={displayUrl}

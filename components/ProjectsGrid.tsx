@@ -47,7 +47,7 @@ export default function ProjectsGrid() {
               {/* Live preview thumbnail at top of card */}
               {project.liveUrl && (
                 <div className="pointer-events-none">
-                  <LivePreview url={project.liveUrl} compact={true} />
+                  <LivePreview url={project.liveUrl} compact={true} previewImage={project.previewImage} />
                 </div>
               )}
 

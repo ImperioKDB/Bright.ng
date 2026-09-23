@@ -24,6 +24,7 @@ export interface Project {
   summary: string;
   stack: string[];
   liveUrl?: string;
+  previewImage?: string;
   repoUrl?: string;
   images: string[];
   nextSlug: string;
@@ -307,6 +308,7 @@ export const projects: Project[] = [
       "Scholars is live at scholars.com.ng, with a public discovery experience and authenticated product flows for onboarding, profiles, saved opportunities, applications, and administration. The project is being developed toward a broader scholarship intelligence platform for students across Africa.",
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Inngest", "Upstash Redis"],
     liveUrl: "https://www.scholars.com.ng",
+    previewImage: "/assets/scholars-homepage-preview.webp",
     repoUrl: "https://github.com/ImperioKDB/Scholars",
     images: [],
     nextSlug: "levyledger",
