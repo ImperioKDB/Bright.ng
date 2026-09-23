@@ -8,7 +8,9 @@ import PillBadge from "@/components/PillBadge";
 import LivePreview from "@/components/LivePreview";
 
 export default function ProjectsGrid() {
-  const featured = projects.filter((p) => p.featured);
+  const featured = projects
+    .filter((p) => p.featured)
+    .sort((a, b) => (a.slug === "scholars" ? -1 : b.slug === "scholars" ? 1 : 0));
 
   return (
     <motion.section

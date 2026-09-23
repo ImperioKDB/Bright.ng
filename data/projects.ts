@@ -83,7 +83,7 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "levyledger",
-    featured: true,
+    featured: false,
   },
   {
     slug: "levyledger",
@@ -202,7 +202,7 @@ export const projects: Project[] = [
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-bookshop",
-    featured: true,
+    featured: false,
   },
   {
     slug: "tacsfon-bookshop",
@@ -255,67 +255,8 @@ export const projects: Project[] = [
     liveUrl: "https://tacsfon-bookshop.vercel.app",
     repoUrl: "",
     images: [],
-    nextSlug: "pastq",
-    featured: false,
-  },
-  {
-    slug: "pastq",
-    title: "PastQ",
-    category: "EdTech",
-    status: "Active",
-    description: "Nigerian university past questions platform with AI-powered extraction and quiz mode.",
-    problem:
-      "Students at Nigerian universities struggle to find organized, searchable past exam questions. What exists is scattered across scanned PDFs shared in WhatsApp groups — unsearchable, unorganized, and easy to lose during exam prep.",
-    solution:
-      "PastQ lets students upload past question PDFs, uses AI to extract and structure individual questions automatically, and turns scanned documents into a searchable, filterable quiz experience organized by course.",
-    myRole:
-      "I founded and built PastQ solo — product direction, the AI extraction pipeline, and the full-stack implementation. The hardest part was getting AI extraction reliable enough across messy, inconsistently formatted scanned PDFs.",
-    features: [
-      {
-        name: "AI-Powered Question Extraction",
-        description:
-          "Upload a PDF and the system extracts individual questions automatically, using a primary model with a fallback list for reliability.",
-      },
-      {
-        name: "Quiz Mode",
-        description:
-          "Extracted questions become an interactive quiz experience, letting students test themselves against real past questions.",
-      },
-      {
-        name: "Browse & Filter by Course",
-        description:
-          "Questions are organized and filterable by course, so finding relevant past questions is instant.",
-      },
-    ],
-    technologies: [
-      {
-        category: "Frontend & Framework",
-        description: "A Next.js frontend deployed on Vercel handles upload, browse, and quiz interfaces.",
-        items: ["Next.js", "Tailwind", "TypeScript"],
-      },
-      {
-        category: "AI Integration Pipeline",
-        description:
-          "Question extraction runs through OpenRouter, using a free-tier vision-language model with a configured fallback model list.",
-        items: ["OpenRouter AI", "nvidia/nemotron-nano-12b-v2-vl"],
-      },
-      {
-        category: "Backend & Storage",
-        description:
-          "An Express.js backend on Render handles PDF processing and extraction orchestration, with Supabase managing the database.",
-        items: ["Express.js", "Supabase", "PostgreSQL"],
-      },
-    ],
-    monetization:
-      "PastQ is moving toward a Paystack-powered model for premium features, while keeping core browsing free for wide student adoption.",
-    summary:
-      "Core upload, extraction, and quiz functionality is live. Phase 4 — authentication, Paystack integration, a leaderboard, and notifications — is in progress.",
-    stack: ["Next.js", "Express.js", "Supabase", "OpenRouter AI"],
-    liveUrl: "https://pastq-frontend.vercel.app",
-    repoUrl: "",
-    images: [],
     nextSlug: "scholars",
-    featured: true,
+    featured: false,
   },
   {
     slug: "scholars",
@@ -368,7 +309,7 @@ export const projects: Project[] = [
     liveUrl: "https://www.scholars.com.ng",
     repoUrl: "https://github.com/ImperioKDB/Scholars",
     images: [],
-    nextSlug: "forge",
+    nextSlug: "levyledger",
     featured: true,
   },
 ];

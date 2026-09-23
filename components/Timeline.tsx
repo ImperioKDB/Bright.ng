@@ -20,12 +20,27 @@ export default function Timeline() {
       </div>
 
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-text text-center md:text-left">
-        Building products.
+        I build with ownership.
       </h2>
       <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 bg-accent-gradient bg-clip-text text-transparent text-center md:text-left">
-        From day one.
+        From idea to production.
       </h2>
-      <p className="text-muted mb-10 text-center md:text-left">… and counting</p>
+      <div className="text-muted max-w-3xl space-y-4 mb-10 text-center md:text-left leading-relaxed">
+        <p>
+          I like working close to the problem: understanding who a product is
+          for, making the important technical decisions, and staying involved
+          until the system is live and useful.
+        </p>
+        <p>
+          My work sits at the intersection of product thinking and engineering.
+          I care about polished interfaces, but also about the data model,
+          permissions, failure states, and operational details that make a
+          product dependable after launch.
+        </p>
+      </div>
+      <p className="text-sm uppercase tracking-widest text-muted mb-4 font-mono text-center md:text-left">
+        Selected building experience
+      </p>
 
       <motion.div
         variants={staggerContainer}

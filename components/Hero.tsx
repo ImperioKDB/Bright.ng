@@ -70,10 +70,10 @@ export default function Hero() {
         </a>
 
         <p className="text-base text-text/90 max-w-xl leading-relaxed">
-          Software Engineering student at UNIBEN building full-stack SaaS,
-          e-commerce, and EdTech products for real users across Nigerian
-          markets. Co-founder of an AI coding agent startup and founder of
-          three independently shipped platforms, from concept to production.
+          Software Engineering student at UNIBEN building Scholars — a
+          scholarship discovery and application platform for students across
+          Africa — alongside thoughtful full-stack products from concept to
+          production.
         </p>
       </div>
     </motion.section>
