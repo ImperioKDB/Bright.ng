@@ -60,6 +60,8 @@ export default function LivePreview({
           <img
             src={previewImage}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute top-0 left-0 w-full h-full object-cover object-top"
           />
         ) : !blocked ? (

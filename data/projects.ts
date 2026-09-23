@@ -146,6 +146,7 @@ export const projects: Project[] = [
       "LevyLedger is live on Solana Devnet with a deployed program at address 4Av48RVmUb2U5V3jqkEC15C5cbjNRY2TqD64ebc1jn1M, verifiable on Solana Explorer. The architecture is mainnet-ready in structure but needs a security audit and a solved fiat-to-USDC on-ramp before a real-money deployment. Planned v2 features include on-chain signer rotation for exco handovers, a cross-faculty transparency leaderboard, and downloadable verifiable handover certificates.",
     stack: ["Rust", "Anchor", "Solana", "Next.js", "Tailwind", "Supabase"],
     liveUrl: "https://levyledger.vercel.app",
+    previewImage: "/assets/levyledger-homepage-preview.webp",
     repoUrl: "",
     images: [],
     nextSlug: "tacsfon-merch",
